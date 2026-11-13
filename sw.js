@@ -1,5 +1,5 @@
 // Offline cache. Bump VERSION after changing index.html.
-const VERSION = 'xplode-v5';
+const VERSION = 'xplode-v7';
 const FILES = ['./', './index.html', './manifest.webmanifest', './icon-180.png', './icon-512.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(VERSION).then(c => c.addAll(FILES))); self.skipWaiting(); });
 self.addEventListener('activate', e => {

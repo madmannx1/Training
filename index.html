@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Xplode">
+<meta name="apple-mobile-web-app-title" content="Training">
 <meta name="theme-color" content="#0c1016">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" href="icon-180.png">
@@ -14,7 +14,7 @@
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}</style>
 </head>
 <body>
-<title>Xplode Oberkörper</title>
+<title>Trainingsplan</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap">
 <style>
@@ -95,6 +95,62 @@ p{margin:0}
 .day.today{border:2px solid var(--accent);background:var(--accent-soft)}
 .day .k.tA{color:var(--plate-a)} .day .k.tB{color:var(--plate-b)} .day .k.tC{color:var(--plate-c)}
 .day .k.tX{font-size:12px;color:var(--muted);font-family:var(--body);font-weight:600;padding-top:2px}
+button.day{font:inherit;color:inherit;cursor:pointer}
+.day.trained{background:var(--good);border-color:var(--good)}
+.day.trained .d,.day.trained .k{color:var(--surface)}
+.day.trained.today{box-shadow:inset 0 0 0 2px var(--accent)}
+.day.trained .s{background:var(--surface)}
+.typegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.typegrid button{border:2px solid var(--line);background:var(--surface);border-radius:12px;padding:14px 6px;font:700 18px var(--display)}
+.typegrid button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.logo svg{width:24px;height:24px}
+.links.three{grid-template-columns:1fr 1fr 1fr}
+.links.three .btn{padding:12px 6px}
+.wcard{display:grid;grid-template-columns:1fr auto;gap:4px 12px;text-align:left;font:inherit;color:inherit;cursor:pointer;width:100%}
+.wcard .eyebrow,.wcard .wcard-v,.wcard .note{grid-column:1}
+.wcard-v{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.wcard-v b{font:700 26px var(--display)}
+.wcard-v span{font-size:14px;color:var(--muted);font-weight:600}
+.wcard-v span.good{color:var(--good)}
+.wcard-go{grid-column:2;grid-row:1 / span 3;align-self:center;font-size:28px;color:var(--muted)}
+.whero-top{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.wbig{display:block;font:700 56px/1 var(--display)}
+.wbig small{font-size:22px;color:var(--muted)}
+.wdiff{text-align:right}
+.wdiff b{display:block;font:700 28px var(--display)}
+.wdiff span{font-size:13px;color:var(--muted)}
+.wdiff.good b{color:var(--good)}
+.goalbar{display:flex;flex-direction:column;gap:6px}
+.goalbar-t{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+.goalbar-b{height:14px;background:var(--surface-2);border-radius:7px;overflow:hidden}
+.goalbar-b i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--good));border-radius:7px;transition:width .6s}
+.goalbar-v{font-size:15px}
+.trend .goal{stroke:var(--good);stroke-width:1.5;stroke-dasharray:5 4}
+.trend .wdot{fill:var(--m-sec);stroke:var(--surface);stroke-width:1.5}
+.beforeafter{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.beforeafter figure{margin:0;display:flex;flex-direction:column;gap:4px}
+.beforeafter img,.pthumb img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:10px;background:var(--surface-2);display:block}
+.beforeafter figcaption{font-size:12px;color:var(--muted)}
+.beforeafter figcaption b{color:var(--fg)}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.pthumb{border:0;background:none;padding:0;display:flex;flex-direction:column;gap:3px;font-size:11px;color:var(--muted);cursor:pointer}
+.pbig{width:100%;border-radius:12px;display:block}
+.ci-row{display:flex;flex-direction:column;gap:6px}
+.ci-q{font-size:14px;font-weight:600}
+.ci-opts{display:flex;gap:6px;flex-wrap:wrap}
+.ci-opts button{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 12px;font-size:14px;font-weight:600;color:var(--fg)}
+.ci-opts button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+.ci-done{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:14px}
+.insight{display:flex;flex-direction:column;gap:6px;border-left:4px solid var(--accent)}
+.insight.warn{border-left-color:var(--warn)} .insight.good{border-left-color:var(--good)}
+.insight > b{font:700 18px var(--display)}
+.corr{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.corr-r{display:grid;grid-template-columns:120px 1fr 56px;gap:8px;align-items:center;font-size:13px}
+.corr-b{height:10px;background:var(--surface-2);border-radius:5px;overflow:hidden}
+.corr-b i{display:block;height:100%;border-radius:5px}
+.corr-b i.pos{background:var(--good)} .corr-b i.neg{background:var(--warn)}
+.corr-r b{text-align:right}
+.hello-in .logo svg{width:30px;height:30px}
 
 .plan-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
 .plan-list li{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px}
@@ -204,6 +260,17 @@ p{margin:0}
 .xr-v.good{color:var(--good)} .xr-v.info{color:var(--accent)} .xr-v.warn{color:var(--warn)}
 .addset.del{color:var(--danger)}
 #motiv{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom,0px) + 166px);z-index:35;width:max-content;max-width:min(420px,calc(100% - 32px));background:var(--accent);color:var(--accent-fg);padding:10px 14px;border-radius:14px;font-weight:600;font-size:15px;line-height:1.35;box-shadow:0 8px 24px rgb(0 0 0 / .25);animation:pop .3s ease-out}
+#exdone{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom,0px) + 166px);z-index:36;width:min(440px,calc(100% - 32px));background:var(--surface);border:2px solid var(--accent);color:var(--fg);padding:14px 16px;border-radius:16px;box-shadow:0 10px 30px rgb(0 0 0 / .3);display:flex;flex-direction:column;gap:4px;cursor:pointer;animation:pop .3s ease-out}
+#exdone.ex-good{border-color:var(--good)} #exdone.ex-warn{border-color:var(--warn)}
+#exdone b{font:700 20px var(--display)}
+#exdone .exd-cmp{font-size:15px;font-weight:600;color:var(--accent)}
+#exdone.ex-good .exd-cmp{color:var(--good)} #exdone.ex-warn .exd-cmp{color:var(--warn)}
+#exdone .exd-say{font-size:15px;color:var(--muted)}
+.set.pre:not(.done) input{color:var(--muted)}
+.sugg-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.sugg-row .addset{padding:0}
+.cmp-inline{font-size:14px;font-weight:600;border-radius:10px;padding:8px 10px;background:var(--surface)}
+.cmp-inline.good{color:var(--good)} .cmp-inline.warn{color:var(--warn)} .cmp-inline.info{color:var(--accent)}
 #motiv span{display:block;margin-top:3px;font-weight:500;font-size:12px;opacity:.85}
 @keyframes pop{from{opacity:0;transform:translate(-50%,10px)}to{opacity:1;transform:translate(-50%,0)}}
 #hello{position:fixed;inset:0;z-index:50;background:var(--bg);display:flex;align-items:center;justify-content:center;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px));padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);animation:fade .35s ease-out}
@@ -320,6 +387,7 @@ ol.steps{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;f
 <div id="sheet" hidden><div class="sheet-in" role="dialog" aria-modal="true" id="sheet-in"></div></div>
 <div id="toast" role="status" aria-live="polite" hidden></div>
 <div id="motiv" role="status" aria-live="polite" hidden></div>
+<div id="exdone" role="status" aria-live="polite" data-act="exdone" hidden></div>
 <div id="hello" hidden></div>
 
 <script>
@@ -331,10 +399,9 @@ const SEIT = {id:'seitheben', name:'Seitheben', sets:3, min:12, max:15, inc:1, h
 const NACK = {id:'nacken', name:'Nacken beugen + strecken', sets:2, min:15, max:20, inc:1.25, hint:'Leicht starten, langsam und ohne Schwung. 1 Satz = beide Richtungen.'};
 const BANK = {id:'bank', name:'Bankdrücken', sets:3, min:6, amrap:true, warmup:true, bar:true, inc:2.5};
 const PLAN = {
-  A:{focus:'Brust', about:'Bankdrücken ist die Hauptübung, dazu Schrägbank für die obere Brust. Klimmzüge und breites Rudern halten Drücken und Ziehen im Gleichgewicht. Zum Schluss Seitheben mit Nacken und ein Arm-Supersatz.', items:[
+  A:{focus:'Brust', about:'Bankdrücken ist die Hauptübung, dazu Schrägbank für die obere Brust. Latzug und breites Rudern halten Drücken und Ziehen im Gleichgewicht. Zum Schluss Seitheben mit Nacken und ein Arm-Supersatz.', items:[
     BANK,
-    {id:'klimmzug', name:'Klimmzüge', sets:3, min:8, max:12, inc:2.5,
-      variants:[{id:'klimmzug', name:'Klimmzüge', hint:'kg = Zusatzgewicht (0 = nur Körpergewicht)'},{id:'latzug_neutral', name:'Latzug neutral'}]},
+    {id:'latzug_neutral', name:'Latzug neutral', sets:3, min:8, max:12, inc:2.5, hint:'Parallelgriff, zur oberen Brust ziehen'},
     {id:'schraegbank_kh', name:'Schrägbankdrücken (KH)', sets:3, min:10, max:12, inc:2, hint:'kg pro Hantel'},
     {id:'rudern_breit', name:'Rudern breit', sets:3, min:10, max:12, inc:2.5, hint:'Brustgestützt oder am Kabel'},
     Object.assign({}, SEIT, {ss:1}),
@@ -375,7 +442,7 @@ const MUSCLE = {chest:'Brust', delt_front:'vordere Schulter', delt_side:'seitlic
 const INFO = {
   bank:{p:['chest'], s:['delt_front','triceps'], cues:['Schulterblätter zusammen und nach unten ziehen, leichtes Hohlkreuz','Stange kontrolliert zur unteren Brust senken','Ellbogen etwa 45–70° vom Körper, nicht weit ausgestellt','Füße fest am Boden, der Po bleibt auf der Bank'], why:'Die Hauptübung für die Brust. Hier steigerst du dich über die 6+-Regel am meisten.'},
   klimmzug:{p:['lats'], s:['biceps','upper_back','delt_rear','forearm'], cues:['Aus dem ganz gestreckten Hang starten, Schultern aktiv nach unten','Brust zur Stange ziehen, Ellbogen Richtung Hüfte','Oben kurz halten, langsam ablassen','Kein Schwung aus den Beinen'], why:'Der Latissimus ist der wichtigste Muskel für die V-Form. Klimmzüge trainieren ihn sehr effektiv.'},
-  latzug_neutral:{p:['lats'], s:['biceps','upper_back','delt_rear'], cues:['Oberkörper leicht zurückgelehnt, Brust raus','Griff zur oberen Brust ziehen, Ellbogen nach unten','Oben die Lats voll dehnen lassen','Nicht mit dem Oberkörper reißen'], why:'Gleiche Wirkung wie Klimmzüge, aber das Gewicht ist frei einstellbar.'},
+  latzug_neutral:{p:['lats'], s:['biceps','upper_back','delt_rear'], cues:['Oberkörper leicht zurückgelehnt, Brust raus','Griff zur oberen Brust ziehen, Ellbogen nach unten','Oben die Lats voll dehnen lassen','Nicht mit dem Oberkörper reißen'], why:'Der Latissimus ist der wichtigste Muskel für die V-Form. Der neutrale Griff schont die Schultern und lässt dich viel Gewicht bewegen.'},
   schraegbank_kh:{p:['chest'], s:['delt_front','triceps'], cues:['Bank auf 30–45° stellen','Hanteln auf Höhe der oberen Brust absenken, tiefe Dehnung','Schulterblätter bleiben zusammen','Oben nicht zusammenschlagen'], why:'Die obere Brust lässt den Oberkörper voller und breiter wirken, besonders im T-Shirt.'},
   rudern_breit:{p:['upper_back','delt_rear'], s:['lats','biceps','traps'], cues:['Brust auf das Polster, breiter Obergriff','Ellbogen seitlich nach hinten-außen ziehen','Am Ende die Schulterblätter zusammendrücken','Langsam zurück in die Dehnung'], why:'Gleicht das viele Drücken aus, macht den oberen Rücken dicker und hält die Schultern gesund.'},
   seitheben:{p:['delt_side'], s:['traps'], cues:['Leicht vorgebeugt, Arme minimal gebeugt','Hanteln seitlich bis Schulterhöhe führen, der Ellbogen führt','Ohne Schwung, oben kurz halten','Lieber leichter und sauber als schwer mit Schwung'], why:'Die seitliche Schulter macht die Schulterbreite aus, also den oberen Teil deines V. Deshalb kommt sie 3× pro Woche dran.'},
@@ -400,20 +467,208 @@ const INFO = {
 const QUOTES = [
   ['Ich habe jede Minute des Trainings gehasst. Aber ich sagte mir: Gib nicht auf. Leide jetzt und lebe den Rest deines Lebens als Champion.','Muhammad Ali'],
   ['Ich zähle meine Sit-ups nicht. Ich fange erst an zu zählen, wenn es wehtut.','Muhammad Ali'],
-  ['Die letzten drei, vier Wiederholungen sind es, die den Muskel wachsen lassen.','Arnold Schwarzenegger'],
-  ['Jeder will Bodybuilder werden, aber keiner will die schweren Gewichte heben.','Ronnie Coleman'],
-  ['Du verfehlst 100 % der Würfe, die du nicht nimmst.','Wayne Gretzky'],
+  ['Champions werden nicht im Fitnessstudio gemacht. Sie entstehen aus etwas tief in ihnen: einem Wunsch, einem Traum, einer Vision.','Muhammad Ali'],
+  ['Unmöglich ist nur ein großes Wort, mit dem kleine Leute um sich werfen.','Muhammad Ali'],
+  ['Wer nicht mutig genug ist, Risiken einzugehen, wird im Leben nichts erreichen.','Muhammad Ali'],
+  ['Der Kampf wird weit weg von Zeugen gewonnen oder verloren: in der Halle und auf der Straße, lange bevor ich unter diesen Lichtern tanze.','Muhammad Ali'],
+  ['Schwebe wie ein Schmetterling, stich wie eine Biene.','Muhammad Ali'],
+  ['Ich bin der Größte. Das habe ich gesagt, bevor ich wusste, dass ich es bin.','Muhammad Ali'],
+  ['Es sind nicht die Berge vor dir, die dich erschöpfen. Es ist der Kiesel in deinem Schuh.','Muhammad Ali'],
+  ['Wer keine Fantasie hat, hat keine Flügel.','Muhammad Ali'],
   ['Ich bin in meinem Leben immer und immer wieder gescheitert. Und genau deshalb habe ich Erfolg.','Michael Jordan'],
   ['Manche wollen, dass es passiert, manche wünschen es sich, andere sorgen dafür.','Michael Jordan'],
+  ['Ich kann Scheitern akzeptieren, jeder scheitert mal. Aber ich kann nicht akzeptieren, es nicht zu versuchen.','Michael Jordan'],
+  ['Wenn du auf eine Mauer triffst, dreh nicht um. Finde heraus, wie du drüberkommst, durchkommst oder drumherum.','Michael Jordan'],
+  ['Du musst Großes von dir erwarten, bevor du es erreichen kannst.','Michael Jordan'],
+  ['Grenzen sind wie Ängste oft nur Illusionen.','Michael Jordan'],
+  ['Schritt für Schritt. Ich kenne keinen anderen Weg, etwas zu erreichen.','Michael Jordan'],
+  ['Talent gewinnt Spiele, aber Teamwork und Intelligenz gewinnen Meisterschaften.','Michael Jordan'],
   ['Wenn du Angst hast zu scheitern, wirst du wahrscheinlich scheitern.','Kobe Bryant'],
-  ['Goldmedaillen bestehen nicht aus Gold. Sie bestehen aus Schweiß, Entschlossenheit und einer seltenen Legierung namens Mut.','Dan Gable'],
+  ['Großartige Dinge kommen von harter Arbeit und Ausdauer. Keine Ausreden.','Kobe Bryant'],
+  ['Ruh dich am Ende aus, nicht in der Mitte.','Kobe Bryant'],
+  ['Weißt du, wie Los Angeles um vier Uhr morgens aussieht?','Kobe Bryant'],
+  ['Alles Negative, Druck und Herausforderungen, ist für mich eine Chance, mich zu steigern.','Kobe Bryant'],
+  ['Es geht nicht ums Ergebnis, sondern um den Prozess, der dich dorthin bringt.','Kobe Bryant'],
+  ['Wir alle haben Selbstzweifel. Leugne sie nicht, aber kapituliere auch nicht vor ihnen.','Kobe Bryant'],
+  ['Die letzten drei, vier Wiederholungen sind es, die den Muskel wachsen lassen.','Arnold Schwarzenegger'],
+  ['Stärke kommt nicht vom Gewinnen. Deine Kämpfe machen dich stark.','Arnold Schwarzenegger'],
+  ['Der Kopf ist die Grenze. Solange du dir vorstellen kannst, etwas zu schaffen, kannst du es schaffen.','Arnold Schwarzenegger'],
+  ['Du kannst die Leiter des Erfolgs nicht mit den Händen in den Hosentaschen hochklettern.','Arnold Schwarzenegger'],
+  ['Der Sinn des Lebens ist nicht, einfach zu existieren, sondern voranzukommen, aufzusteigen, zu erobern.','Arnold Schwarzenegger'],
+  ['Bleib hungrig.','Arnold Schwarzenegger'],
+  ['Jeder will Bodybuilder werden, aber keiner will die schweren Gewichte heben.','Ronnie Coleman'],
+  ['Light weight, baby!','Ronnie Coleman'],
+  ['Yeah buddy!','Ronnie Coleman'],
+  ['Ist doch nur eine Erdnuss!','Ronnie Coleman'],
+  ['Stimulieren, nicht vernichten.','Lee Haney'],
+  ['Je höher die Intensität, desto kürzer muss das Training sein.','Mike Mentzer'],
+  ['Übung ist König, Ernährung ist Königin. Bring beide zusammen und du hast ein Königreich.','Jack LaLanne'],
+  ['Ich kann es mir nicht leisten zu sterben. Das würde mein Image ruinieren.','Jack LaLanne'],
+  ['Du verfehlst 100 % der Würfe, die du nicht nimmst.','Wayne Gretzky'],
+  ['Ich laufe dahin, wo der Puck hingeht, nicht dahin, wo er war.','Wayne Gretzky'],
   ['Ich habe vier Jahre trainiert, um neun Sekunden zu laufen.','Usain Bolt'],
+  ['Ich denke nicht in Grenzen.','Usain Bolt'],
+  ['Es gibt bessere Starter als mich, aber ich bin ein starker Finisher.','Usain Bolt'],
   ['Talent ohne harte Arbeit ist nichts.','Cristiano Ronaldo'],
+  ['Wenn du nicht glaubst, dass du der Beste bist, wirst du nie alles erreichen, was du kannst.','Cristiano Ronaldo'],
   ['Kein Mensch ist limitiert.','Eliud Kipchoge'],
-  ['Erfolg hat nicht immer mit Größe zu tun. Es geht um Beständigkeit. Beständige harte Arbeit führt zum Erfolg.','Dwayne Johnson'],
-  ['Es ist nicht der Berg, den wir bezwingen, sondern wir selbst.','Edmund Hillary'],
+  ['Nur die Disziplinierten sind im Leben frei.','Eliud Kipchoge'],
+  ['Es geht nicht um die Beine, es geht um Herz und Kopf.','Eliud Kipchoge'],
   ['Je mehr du träumst, desto weiter kommst du.','Michael Phelps'],
-  ['Light weight, baby!','Ronnie Coleman']
+  ['Ziele sollten nie einfach sein. Sie sollten dich zwingen zu arbeiten, auch wenn es unangenehm ist.','Michael Phelps'],
+  ['Goldmedaillen bestehen nicht aus Gold. Sie bestehen aus Schweiß, Entschlossenheit und einer seltenen Legierung namens Mut.','Dan Gable'],
+  ['Erster ist Erster. Zweiter ist niemand.','Dan Gable'],
+  ['Erfolg hat nicht immer mit Größe zu tun. Es geht um Beständigkeit. Beständige harte Arbeit führt zum Erfolg.','Dwayne Johnson'],
+  ['Sei immer der härteste Arbeiter im Raum.','Dwayne Johnson'],
+  ['Blut, Schweiß und Respekt. Die ersten beiden gibst du, das letzte verdienst du dir.','Dwayne Johnson'],
+  ['Es ist nicht der Berg, den wir bezwingen, sondern wir selbst.','Edmund Hillary'],
+  ['Ein Champion zeigt sich nicht an seinen Siegen, sondern daran, wie er nach einem Sturz zurückkommt.','Serena Williams'],
+  ['Ich verliere nicht gern, bei nichts. Aber gewachsen bin ich am meisten an Rückschlägen, nicht an Siegen.','Serena Williams'],
+  ['Erfolg ist kein Zufall. Er ist harte Arbeit, Ausdauer, Lernen, Opfer und vor allem Liebe zu dem, was du tust.','Pelé'],
+  ['Je schwieriger der Sieg, desto größer die Freude.','Pelé'],
+  ['Alles ist Übung.','Pelé'],
+  ['Begeisterung ist alles.','Pelé'],
+  ['Es kommt nicht darauf an, ob du zu Boden gehst, sondern ob du wieder aufstehst.','Vince Lombardi'],
+  ['Der einzige Ort, an dem Erfolg vor Arbeit kommt, ist das Wörterbuch.','Vince Lombardi'],
+  ['Gewinner geben nie auf, und wer aufgibt, gewinnt nie.','Vince Lombardi'],
+  ['Perfektion ist nicht erreichbar. Aber wer nach Perfektion strebt, erreicht Exzellenz.','Vince Lombardi'],
+  ['Müdigkeit macht Feiglinge aus uns allen.','Vince Lombardi'],
+  ['Wir haben das Spiel nicht verloren. Uns ist nur die Zeit ausgegangen.','Vince Lombardi'],
+  ['Selbstvertrauen ist ansteckend. Mangelndes Selbstvertrauen auch.','Vince Lombardi'],
+  ['Der Preis des Erfolgs ist harte Arbeit, Hingabe und die Entschlossenheit, immer das Beste gegeben zu haben.','Vince Lombardi'],
+  ['Es ist schwer, jemanden zu schlagen, der niemals aufgibt.','Babe Ruth'],
+  ['Lass dich nie von der Angst vorm Scheitern davon abhalten, mitzuspielen.','Babe Ruth'],
+  ['Alter ist keine Barriere. Es ist eine Grenze, die du dir im Kopf setzt.','Jackie Joyner-Kersee'],
+  ['Druck ist ein Privileg.','Billie Jean King'],
+  ['Champions spielen weiter, bis sie es richtig machen.','Billie Jean King'],
+  ['Ein Gewinner erkennt sein Talent, arbeitet bis zum Äußersten daran und nutzt es, um seine Ziele zu erreichen.','Larry Bird'],
+  ['Der Wille zu gewinnen ist wichtig. Der Wille, sich vorzubereiten, ist entscheidend.','Joe Paterno'],
+  ['Wenn du einen Körper hast, bist du ein Athlet.','Bill Bowerman'],
+  ['Weniger als dein Bestes zu geben heißt, dein Talent zu verschwenden.','Steve Prefontaine'],
+  ['Manche laufen, um zu gewinnen. Ich laufe, um zu sehen, wer am meisten Mut hat.','Steve Prefontaine'],
+  ['Wir alle haben Träume. Aber um sie wahr zu machen, braucht es Entschlossenheit, Hingabe, Selbstdisziplin und Anstrengung.','Jesse Owens'],
+  ['Ich fürchte nicht den Mann, der 10.000 Tritte einmal geübt hat, sondern den, der einen Tritt 10.000-mal geübt hat.','Bruce Lee'],
+  ['Es gibt keine Grenzen. Es gibt nur Plateaus, und du darfst nicht dort bleiben. Du musst über sie hinausgehen.','Bruce Lee'],
+  ['Wissen reicht nicht, wir müssen es anwenden. Wollen reicht nicht, wir müssen es tun.','Bruce Lee'],
+  ['Wünsch dir kein leichtes Leben. Wünsch dir die Kraft, ein schweres zu meistern.','Bruce Lee'],
+  ['Sei Wasser, mein Freund.','Bruce Lee'],
+  ['Ein Ziel muss nicht immer erreicht werden. Oft dient es einfach als etwas, worauf man zielt.','Bruce Lee'],
+  ['Nimm, was nützlich ist, verwirf, was nutzlos ist, und füge hinzu, was ganz dein Eigenes ist.','Bruce Lee'],
+  ['Jeder hat einen Plan, bis er eins auf den Mund bekommt.','Mike Tyson'],
+  ['Disziplin heißt, das zu tun, was du hasst, aber es so zu tun, als würdest du es lieben.','Mike Tyson'],
+  ['Champions werden nicht im Ring gemacht. Dort werden sie nur erkannt.','Joe Frazier'],
+  ['Nichts wird dir geschenkt. Alles musst du dir verdienen.','LeBron James'],
+  ['Egal wie gut du bist, du kannst immer besser werden. Das ist das Spannende daran.','Tiger Woods'],
+  ['Es gibt keinen Weg um harte Arbeit herum. Nimm sie an.','Roger Federer'],
+  ['Ich spiele jeden Punkt, als ginge es um mein Leben.','Rafael Nadal'],
+  ['Man muss kämpfen, um seinen Traum zu erreichen. Man muss Opfer bringen und hart dafür arbeiten.','Lionel Messi'],
+  ['Ich habe jahrelang früh angefangen und spät aufgehört. Es hat 17 Jahre und 114 Tage gedauert, über Nacht berühmt zu werden.','Lionel Messi'],
+  ['Setz dir hohe Ziele und hör nicht auf, bis du dort bist.','Bo Jackson'],
+  ['Heute tue ich, was andere nicht tun, damit ich morgen erreiche, was andere nicht erreichen.','Jerry Rice'],
+  ['Wenn du laufen willst, lauf eine Meile. Wenn du ein neues Leben erleben willst, lauf einen Marathon.','Emil Zátopek'],
+  ['Der Geist ist alles. Muskeln sind Gummistücke. Alles, was ich bin, bin ich wegen meines Geistes.','Paavo Nurmi'],
+  ['Unterschätze nie die Kraft der Träume. Das Potenzial für Größe lebt in jedem von uns.','Wilma Rudolph'],
+  ['Gewinnen ist großartig. Aber wenn du wirklich etwas erreichen willst, musst du lernen zu verlieren.','Wilma Rudolph'],
+  ['Ich laufe nicht vor Herausforderungen weg. Ich laufe auf sie zu.','Nadia Comăneci'],
+  ['Ich bin nicht der nächste Usain Bolt oder Michael Phelps. Ich bin die erste Simone Biles.','Simone Biles'],
+  ['Wenn du nicht mehr in eine Lücke fährst, die da ist, bist du kein Rennfahrer mehr.','Ayrton Senna'],
+  ['Ich habe keine Idole. Ich bewundere Arbeit, Hingabe und Können.','Ayrton Senna'],
+  ['Wenn alles unter Kontrolle scheint, bist du nicht schnell genug.','Mario Andretti'],
+  ['Weiter, immer weiter!','Oliver Kahn'],
+  ['Wir müssen von Zweiflern zu Glaubenden werden.','Jürgen Klopp'],
+  ['Nach dem Spiel ist vor dem Spiel.','Sepp Herberger'],
+  ['Jeder Nachteil hat seinen Vorteil.','Johan Cruyff'],
+  ['Ich hab gleich gemerkt, das ist ein Druckschmerz. Wenn man drückt, dann schmerzt es.','Lothar Matthäus'],
+  ['Ich habe fertig.','Giovanni Trapattoni'],
+  ['Fußball ist wie Schach, nur ohne Würfel.','Lukas Podolski'],
+  ['Du kannst nicht gewinnen, wenn du nicht lernst zu verlieren.','Kareem Abdul-Jabbar'],
+  ['Konzentration und mentale Stärke entscheiden über den Sieg.','Bill Russell'],
+  ['Wir reden hier über Training!','Allen Iverson'],
+  ['Harte Arbeit schlägt Talent, wenn Talent nicht hart arbeitet.','Tim Notke'],
+  ['Andere haben vielleicht mehr Talent als du. Aber es gibt keine Ausrede dafür, dass jemand härter arbeitet als du.','Derek Jeter'],
+  ['Mein Motto war immer: weiterschwingen. Egal ob Formtief oder schlechter Tag, das Einzige, was hilft, ist weiterzuschwingen.','Hank Aaron'],
+  ['Es ist nicht vorbei, bis es vorbei ist.','Yogi Berra'],
+  ['90 % des Spiels sind zur Hälfte mental.','Yogi Berra'],
+  ['Können ist, was du tun kannst. Motivation bestimmt, was du tust. Einstellung bestimmt, wie gut du es tust.','Lou Holtz'],
+  ['Lass nicht zu, dass das, was du nicht kannst, dem im Weg steht, was du kannst.','John Wooden'],
+  ['Sei schnell, aber hetze nicht.','John Wooden'],
+  ['Mach jeden Tag zu deinem Meisterwerk.','John Wooden'],
+  ['Exzellenz ist das schrittweise Ergebnis davon, ständig besser werden zu wollen.','Pat Riley'],
+  ['Bei Ham and Eggs ist das Huhn beteiligt. Das Schwein ist voll dabei.','Martina Navratilova'],
+  ['Fang an, wo du bist. Nutze, was du hast. Tu, was du kannst.','Arthur Ashe'],
+  ['Ein Schlüssel zum Erfolg ist Selbstvertrauen. Ein Schlüssel zum Selbstvertrauen ist Vorbereitung.','Arthur Ashe'],
+  ['Es wird nicht leichter. Du wirst nur schneller.','Greg LeMond'],
+  ['Fahr so viel oder so wenig, so lang oder so kurz, wie du willst. Aber fahr.','Eddy Merckx'],
+  ['Halt die Klappe, Beine!','Jens Voigt'],
+  ['Lauf, wenn du kannst. Geh, wenn du musst. Kriech, wenn es sein muss. Aber gib nie auf.','Dean Karnazes'],
+  ['Hier gibt es kein Talent. Das ist harte Arbeit. Das ist Besessenheit.','Conor McGregor'],
+  ['Harte Arbeit! Hingabe!','Floyd Mayweather'],
+  ['Er kann davonlaufen, aber er kann sich nicht verstecken.','Joe Louis'],
+  ['Ein Champion ist jemand, der aufsteht, wenn er es eigentlich nicht mehr kann.','Jack Dempsey'],
+  ['Um ein Champion zu sein, musst du an dich glauben, wenn es sonst keiner tut.','Sugar Ray Robinson'],
+  ['Je mehr ich übe, desto mehr Glück habe ich.','Gary Player'],
+  ['Das Geheimnis liegt im Dreck.','Ben Hogan'],
+  ['Erfolg ist kein Zufall. Erfolg ist eine Entscheidung.','Stephen Curry'],
+  ['Alles ist möglich!','Kevin Garnett'],
+  ['Im Sport gibt es kein Scheitern.','Giannis Antetokounmpo'],
+  ['Druck spürst du nur, wenn du nicht weißt, was du tust.','Peyton Manning'],
+  ['Mein Lieblingsring ist der nächste.','Tom Brady'],
+  ['Der Unterschied zwischen dem Unmöglichen und dem Möglichen liegt in der Entschlossenheit.','Tommy Lasorda'],
+  ['Ich halte mich für den glücklichsten Menschen auf dieser Erde.','Lou Gehrig']
+];
+const SAY_UP = [
+  'Mehr als letztes Mal. Genau so wächst Muskel.',
+  'Fortschritt schwarz auf weiß. Stark!',
+  'Du hast dein altes Ich gerade geschlagen.',
+  'Das ist progressive Überlastung in Reinform.',
+  'Jede zusätzliche Wiederholung zählt. Weiter so!',
+  'Stärker als beim letzten Mal. Dein Körper hat verstanden.',
+  'So sieht ein guter Trainingstag aus.',
+  'Neuer Bestwert in Reichweite. Bleib dran!',
+  'Das Gewicht wird leichter, weil du stärker wirst.',
+  'Sauber gesteigert. Genau dafür trainierst du.',
+  'Kleine Schritte, große Wirkung. Heute war ein Schritt.',
+  'Die Arbeit der letzten Wochen zahlt sich aus.',
+  'Mehr Wiederholungen, mehr Wachstum.',
+  'Du wirst sichtbar besser. Weiter!',
+  'Das war mehr als letztes Mal. Respekt.',
+  'Stark geliefert. Das nächste Level wartet schon.',
+  'Dein Plan funktioniert, weil du ihn durchziehst.',
+  'Heute stärker als gestern, morgen stärker als heute.',
+  'Genau dieser Fortschritt baut dein V auf.',
+  'Mehr geschafft als beim letzten Mal. Feier das kurz und weiter geht’s.',
+  'Konstanz schlägt alles. Das Ergebnis siehst du hier.',
+  'Das war eine echte Steigerung. Sehr gut!',
+  'Die Muskeln merken sich jede extra Wiederholung.',
+  'Grenze verschoben. Weiter so!',
+  'Du bist auf dem richtigen Weg. Die Zahlen zeigen es.'
+];
+const SAY_KEEP = [
+  'Nicht jeder Tag ist ein Rekordtag. Du warst trotzdem da.',
+  'Gehalten ist auch stark. Nächstes Mal geht mehr.',
+  'Schwankungen sind normal. Der Trend zählt, nicht ein Tag.',
+  'Wer heute dranbleibt, steigert sich nächste Woche.',
+  'Schlaf, Essen, Stress: Manchmal ist der Tag einfach schwerer. Weiter geht’s.',
+  'Du hast trainiert, obwohl es zäh war. Das ist Disziplin.',
+  'Plateaus sind Teil des Weges. Du gehst weiter.',
+  'Ein schwächerer Satz heute baut den stärkeren von morgen.',
+  'Kraft wächst in Wellen. Die nächste kommt.',
+  'Hauptsache sauber. Die Steigerung kommt von selbst.',
+  'Gleich wie letztes Mal heißt: Basis gesichert.',
+  'Nicht jeder Satz ist ein Fortschritt, aber jeder Satz zählt.',
+  'Erholung ist auch Training. Gönn dir heute gutes Essen und Schlaf.',
+  'Du bist nicht schwächer geworden, nur der Tag war schwerer.',
+  'Dranbleiben ist der eigentliche Fortschritt.',
+  'Auch Profis haben solche Tage. Sie kommen trotzdem wieder.',
+  'Abhaken, erholen, nächstes Mal angreifen.',
+  'Ein Tag entscheidet nichts. Wochen und Monate entscheiden.',
+  'Gut, dass du es durchgezogen hast. Das zählt.',
+  'Heute Fundament gelegt. Nächstes Mal wird drauf gebaut.',
+  'Konstant bleiben ist schwerer als einmal glänzen. Du bleibst konstant.',
+  'Kopf hoch. Die nächste Einheit gehört dir.',
+  'Weniger heute, mehr Hunger fürs nächste Mal.',
+  'Die Kurve geht nicht jede Woche hoch, aber sie geht hoch, wenn du bleibst.',
+  'Du hast nicht aufgegeben. Das ist der wichtigste Satz.'
 ];
 const CARDIO_TIPS = [
   ['20–40 Minuten locker','Rad, Schräglaufband, Rudergerät oder zügiger Spaziergang. Du solltest dich dabei noch in ganzen Sätzen unterhalten können.'],
@@ -453,7 +708,9 @@ function normalize(d){
       if(e.warm && typeof e.warm[0] === 'boolean') e.warm = WARM.map((w, i) => ({kg:null, reps:w.r, done:e.warm[i], auto:true}));
     }
   }
-  return {sessions: Array.isArray(d.sessions) ? d.sessions : [], active, settings: st, deloads: d.deloads || {}, startDate: d.startDate || null, days: d.days || {}, lastBackup: d.lastBackup || null};
+  return {sessions: Array.isArray(d.sessions) ? d.sessions : [], active, settings: st, deloads: d.deloads || {}, startDate: d.startDate || null, days: d.days || {}, lastBackup: d.lastBackup || null,
+    weekPlan: d.weekPlan || {}, weights: Array.isArray(d.weights) ? d.weights : [], weightGoal: d.weightGoal || null,
+    photos: Array.isArray(d.photos) ? d.photos : [], hintsHidden: d.hintsHidden || {}};
 }
 /* Accepts both the backup file format ({app, data}) and a raw state object */
 function unwrapBackup(raw){
@@ -487,7 +744,8 @@ const dateKey = ts => { const d = new Date(ts); return d.getFullYear() + '-' + S
 const fmtDate = ts => new Date(ts).toLocaleDateString('de-DE', {weekday:'short', day:'2-digit', month:'2-digit'});
 const repsTarget = it => it.amrap ? it.min + '+' : it.min + '–' + it.max;
 const wdIdx = ts => (new Date(ts).getDay() + 6) % 7;
-const typeOn = ts => S.settings.schedule[wdIdx(ts)];
+/* A day can be set individually (weekPlan, per date); otherwise the weekly schedule applies */
+const typeOn = ts => S.weekPlan[dateKey(ts)] || S.settings.schedule[wdIdx(ts)];
 const warmKg = (base, p, it) => base ? Math.max(it.bar ? 20 : 0, roundStep(base * p, (it.bar || (it.inc || 2.5) >= 2.5) ? 2.5 : 1)) : null;
 const AMRAP_TABLE = [
   {lab:'unter 4', act:'−2,5 kg', d:-2.5, tone:'warn', test:r => r < 4},
@@ -550,9 +808,7 @@ function plateau(exId){
 function suggest(it, ex){
   const h = histFor(ex.id);
   if(!h.length){
-    return {kg:null, last:null, tone:'info',
-      text: it.amrap ? 'Erstes Mal: Gewicht wählen, mit dem 6 saubere Wdh gut machbar sind.'
-                     : 'Erstes Mal: Gewicht wählen, bei dem die letzten 2–3 Wdh deutlich schwer werden.'};
+    return {kg:null, last:null, tone:'info', first:true, text:''};
   }
   const last = h[h.length - 1], p = perf(last.sets), w = p.maxKg;
   const reps = last.sets.map(x => x.reps);
@@ -636,17 +892,47 @@ function workoutMuscles(wk){
 }
 
 /* ---------- Session ---------- */
+/* Last session in which this exercise was actually done (skipped sessions are ignored) */
+function lastEntry(exId){
+  for(let i = S.sessions.length - 1; i >= 0; i--){
+    const e = S.sessions[i].entries.find(x => x.exId === exId && x.sets.some(s => s.done && s.reps > 0));
+    if(e) return e;
+  }
+  return null;
+}
 function buildEntry(it, idx, phase){
   const ex = exOf(it);
   const sg = suggest(it, ex);
-  const prev = (histFor(ex.id).slice(-1)[0] || {}).sets || [];
+  const le = lastEntry(ex.id);
+  const prev = le ? le.sets.filter(s => s.done && s.reps > 0) : [];
   const n = setsFor(it, phase);
+  const pick = i => prev[i] || prev[prev.length - 1] || null;
+  const baseKg = prev.length ? pick(0).kg : sg.kg;
+  const lastWarm = le && le.warm && le.warm.length ? le.warm : null;
+  const warmDefs = it.warmup ? WARM : [{p:.5, r:12}];
   return {
     slot: idx, exId: ex.id, name: ex.name, hint: ex.hint || '', sugg: sg,
-    sets: Array.from({length:n}, (_, i) => ({kg: sg.kg, reps: null, done: false, ph: prev[i] ? prev[i].reps : null})),
-    warm: it.warmup ? WARM.map(w => ({kg: warmKg(sg.kg, w.p, it), reps: w.r, done: false, auto: true, p: w.p}))
-                    : [{kg: warmKg(sg.kg, .5, it), reps: 12, done: false, auto: true, p: .5}]
+    prevSets: prev.map(s => ({kg: s.kg, reps: s.reps})),
+    sets: Array.from({length:n}, (_, i) => {
+      const p = pick(i);
+      return {kg: p ? p.kg : sg.kg, reps: p ? p.reps : null, done: false, pre: !!p, ph: p ? p.reps : null};
+    }),
+    warm: lastWarm
+      ? lastWarm.map((w, i) => ({kg: w.kg, reps: w.reps, done: false, auto: false, p: warmDefs[i] ? warmDefs[i].p : null}))
+      : warmDefs.map(w => ({kg: warmKg(baseKg, w.p, it), reps: w.r, done: false, auto: true, p: w.p}))
   };
+}
+function compareSets(now, prev){
+  const done = now.filter(s => s.done && s.reps > 0).map(s => ({kg: num(s.kg) || 0, reps: s.reps}));
+  if(!done.length) return null;
+  if(!prev || !prev.length) return {tone:'info', dir:0, text:'Erste Werte gespeichert. Ab dem nächsten Mal siehst du hier deinen Vergleich.'};
+  const a = perf(done), b = perf(prev);
+  const was = fmt(b.maxKg) + ' kg · ' + prev.map(x => x.reps).join('/');
+  if(a.maxKg > b.maxKg + 1e-9) return {tone:'good', dir:1, text:'+' + fmt(a.maxKg - b.maxKg) + ' kg gegenüber letztem Mal (' + was + ')'};
+  if(a.maxKg < b.maxKg - 1e-9) return {tone:'warn', dir:-1, text:fmt(a.maxKg - b.maxKg) + ' kg gegenüber letztem Mal (' + was + ')'};
+  if(a.total > b.total) return {tone:'good', dir:1, text:'+' + (a.total - b.total) + ' Wdh gegenüber letztem Mal (' + was + ')'};
+  if(a.total < b.total) return {tone:'warn', dir:-1, text:(a.total - b.total) + ' Wdh gegenüber letztem Mal (' + was + ')'};
+  return {tone:'info', dir:0, text:'Genau wie letztes Mal (' + was + ')'};
 }
 function startSession(wk){
   const phase = effectivePhase();
@@ -672,8 +958,10 @@ function toggleSet(ei, si){
   if(s.done){ s.done = false; save(); render(); return; }
   if(s.reps == null) s.reps = s.ph != null ? s.ph : it.min;
   if(s.kg == null) s.kg = 0;
-  s.done = true;
-  if(S.settings.setQuotes) showMotiv();
+  s.done = true; s.pre = false;
+  markActivity(ei);
+  if(e.sets.every(x => x.done)) showExerciseDone(e);
+  else if(S.settings.setQuotes) showMotiv();
   const pj = partnerOf(ei);
   if(pj >= 0 && a.items[pj].sets[si] && !a.items[pj].sets[si].done){
     a.timer = null;
@@ -691,15 +979,15 @@ function toggleSet(ei, si){
 function toggleWarm(ei, wi){
   const w = S.active.items[ei].warm[wi];
   if(!w.done){ if(w.reps == null) w.reps = 5; if(w.kg == null) w.kg = 0; }
-  w.done = !w.done; save(); render();
+  w.done = !w.done; if(w.done) markActivity(ei); save(); render();
 }
 function finishSession(){
   const a = S.active;
   const prevBest = {}, prevLast = {};
   for(const e of a.items){ const h = histFor(e.exId); prevBest[e.exId] = h.length ? Math.max(...h.map(x => perf(x.sets).e1)) : null; prevLast[e.exId] = h.length ? h[h.length - 1].sets : null; }
   const sess = {
-    id: a.id, wk: a.wk, start: a.start, end: Date.now(), phase: a.phase,
-    entries: a.items.map(e => ({exId: e.exId, name: e.name,
+    id: a.id, wk: a.wk, start: a.start, end: Date.now(), phase: a.phase, checkin: a.checkin || null,
+    entries: a.items.map(e => ({exId: e.exId, name: e.name, dur: e.sets.some(x => x.done) ? durOf(e) : null,
       warm: (e.warm || []).filter(w => w.done).map(w => ({kg: num(w.kg) || 0, reps: num(w.reps) || 0})),
       sets: e.sets.map(s => ({kg: num(s.kg) || 0, reps: num(s.reps) || 0, done: !!s.done}))}))
   };
@@ -721,7 +1009,8 @@ function finishSession(){
   });
   const mainId = a.items[0].exId;
   const trend = histFor(mainId).map(x => ({date: x.date, v: perf(x.sets).e1, top: x.sets.reduce((b, s) => s.kg * (1 + s.reps / 30) > b.kg * (1 + b.reps / 30) ? s : b, x.sets[0])})).slice(-12);
-  summary = {wk: a.wk, mins: Math.round((sess.end - sess.start) / 60000), sets, vol, prs, rows, trend, mainName: a.items[0].name};
+  const durs = sess.entries.filter(e => e.dur > 0).map(e => ({name: e.name, dur: e.dur, avg: avgDur(e.exId)}));
+  summary = {wk: a.wk, mins: Math.round((sess.end - sess.start) / 60000), sets, vol, prs, rows, trend, mainName: a.items[0].name, durs, rpe: a.checkin && a.checkin.rpe ? +a.checkin.rpe : null};
   S.active = null; confirmKey = null;
   save(); view = 'summary'; render(); window.scrollTo(0, 0); releaseWake();
   if(S.settings.autoBackup && !embedded) shareBackup();
@@ -730,7 +1019,7 @@ function finishSession(){
 /* ---------- Backup (Web Share API with download fallback) ---------- */
 const embedded = (() => { try{ return window.top !== window.self; }catch(e){ return true; } })();
 function backupJson(){
-  const data = Object.assign({}, S, {active: null});
+  const data = Object.assign({}, S, {active: null, photoData: Object.assign({}, photoData)});
   return JSON.stringify({app:'xplode-oberkoerper', version:2, exported:new Date().toISOString(), data});
 }
 function downloadFile(name, txt){
@@ -786,6 +1075,20 @@ function showMotiv(){
   el.hidden = false; el.style.animation = 'none'; void el.offsetWidth; el.style.animation = '';
   clearTimeout(motivT); motivT = setTimeout(() => { el.hidden = true; }, 3000);
 }
+let exdoneT = null, lastSay = '';
+function showExerciseDone(e){
+  const c = compareSets(e.sets, e.prevSets);
+  if(!c) return;
+  const pool = c.dir > 0 ? SAY_UP : c.dir < 0 ? SAY_KEEP : (e.prevSets && e.prevSets.length ? SAY_KEEP : SAY_UP);
+  let say; do{ say = pool[Math.floor(Math.random() * pool.length)]; }while(pool.length > 1 && say === lastSay);
+  lastSay = say;
+  const el = $('#exdone');
+  el.className = 'ex-' + c.tone;
+  el.innerHTML = '<b>' + esc(e.name) + ' geschafft ✓</b><span class="exd-cmp">' + esc(c.text) + '</span><span class="exd-say">' + esc(say) + '</span>';
+  el.hidden = false; $('#motiv').hidden = true;
+  el.style.animation = 'none'; void el.offsetWidth; el.style.animation = '';
+  clearTimeout(exdoneT); exdoneT = setTimeout(() => { el.hidden = true; }, 6000);
+}
 function greet(){
   const now = new Date(), hr = now.getHours();
   const hi = hr < 11 ? 'Guten Morgen' : hr < 18 ? 'Hallo' : 'Guten Abend';
@@ -795,7 +1098,7 @@ function greet(){
     : t === 'cardio' ? 'Heute: Cardio' : t === 'flex' ? 'Heute: Flex' : 'Heute: Ruhetag';
   const q = randomQuote(QUOTES);
   const el = $('#hello');
-  el.innerHTML = '<div class="hello-in"><span class="logo">X1</span><h2>' + hi + '!</h2><p class="hello-day">' + esc(today) + '</p>' +
+  el.innerHTML = '<div class="hello-in"><span class="logo"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg></span><h2>' + hi + '!</h2><p class="hello-day">' + esc(today) + '</p>' +
     '<blockquote>„' + esc(q[0]) + '“<cite>' + esc(q[1]) + '</cite></blockquote>' +
     '<button class="btn primary big" data-act="hello">Los geht’s</button></div>';
   el.hidden = false;
@@ -872,7 +1175,7 @@ function planSheet(){
     h += '<section class="card stack"><div class="wk-head"><span class="plate p' + wk + '">' + wk + '</span><div><h2>Workout ' + wk + '</h2><p>Fokus ' + esc(PLAN[wk].focus) + '</p></div></div><p>' + esc(PLAN[wk].about) + '</p>' + bodyMap(m.p, m.s) + planList(wk) + '</section>';
   }
   h += '<section class="card"><h4>Und die Beine?</h4><p>Eine Übung pro Woche: Beinpresse mit hoch gesetzten Füßen in Workout B. Sie trainiert vordere Oberschenkel und Po, die Beinbeuger arbeiten mit. Das hält die Beine in Form, ohne Zeit und Energie vom Oberkörper zu nehmen.</p></section>';
-  h += '<section class="card"><h4>Pausen</h4><p>In der App eingestellt: ' + S.settings.restMain + ' s bei den Hauptübungen, ' + S.settings.restIso + ' s bei allen anderen. Der Xplode-Guide empfiehlt bei den Hauptübungen 2–3 Minuten. Wenn du dort nicht mehr vorankommst, verlängere die Pause in den Einstellungen.</p></section>';
+  h += '<section class="card"><h4>Pausen</h4><p>In der App eingestellt: ' + S.settings.restMain + ' s bei den Hauptübungen, ' + S.settings.restIso + ' s bei allen anderen. Der Trainingsplan-Guide empfiehlt bei den Hauptübungen 2–3 Minuten. Wenn du dort nicht mehr vorankommst, verlängere die Pause in den Einstellungen.</p></section>';
   openSheet('Der Plan erklärt', h);
 }
 
@@ -918,6 +1221,7 @@ function render(){
   if(view === 'session' && S.active) app.innerHTML = renderSession();
   else if(view === 'history') app.innerHTML = renderHistory();
   else if(view === 'settings') app.innerHTML = renderSettings();
+  else if(view === 'weight') app.innerHTML = renderWeight();
   else if(view === 'summary' && summary) app.innerHTML = renderSummary();
   else { view = 'home'; app.innerHTML = renderHome(); }
   tick();
@@ -925,11 +1229,289 @@ function render(){
 function weekStrip(){
   const now = Date.now(), today = wdIdx(now), monday = dayStart(now) - today * 864e5;
   return '<div class="week">' + DAYS.map((d, i) => {
-    const ts = monday + i * 864e5 + 12 * 3600e3, t = S.settings.schedule[i];
-    const done = isStrength(t) ? sessionsOn(ts).length > 0 : (t !== 'rest' && !!S.days[dateKey(ts)]);
-    return '<div class="day' + (i === today ? ' today' : '') + (done ? ' done' : '') + '" title="' + DAYS_LONG[i] + ': ' + TYPES[t] + (done ? ', erledigt' : '') + '"><span class="d">' + d + '</span><span class="k ' + (isStrength(t) ? 't' + t : 'tX') + '">' + TSHORT[t] + '</span><span class="s"></span></div>';
+    const ts = monday + i * 864e5 + 12 * 3600e3, t = typeOn(ts);
+    const trained = sessionsOn(ts).map(s => s.wk);
+    const done = trained.length > 0 || (!isStrength(t) && t !== 'rest' && !!S.days[dateKey(ts)]);
+    const label = trained.length ? trained.join('+') : TSHORT[t];
+    const cls = trained.length ? 'tDone' : (isStrength(t) ? 't' + t : 'tX');
+    return '<button class="day' + (i === today ? ' today' : '') + (done ? ' done' : '') + (trained.length ? ' trained' : '') + '" data-act="day" data-ts="' + ts + '" aria-label="' + DAYS_LONG[i] + ': ' + (trained.length ? 'Workout ' + trained.join(' und ') + ' erledigt' : TYPES[t]) + '. Tippen zum Ändern"><span class="d">' + d + '</span><span class="k ' + cls + '">' + label + '</span><span class="s"></span></button>';
   }).join('') + '</div>';
 }
+/* ---------- Day sheet: set a day's workout ---------- */
+function daySheet(ts){
+  const wd = wdIdx(ts), k = dateKey(ts), t = typeOn(ts), trained = sessionsOn(ts);
+  const dateTxt = DAYS_LONG[wd] + ', ' + new Date(ts).toLocaleDateString('de-DE', {day:'2-digit', month:'2-digit'});
+  let h = '';
+  if(trained.length) h += '<section class="card"><p><b style="color:var(--good)">✓ Trainiert:</b> ' + trained.map(s => 'Workout ' + s.wk + ' (' + Math.round((s.end - s.start) / 60000) + ' min)').join(', ') + '</p></section>';
+  h += '<section class="card stack"><h4>Was steht an diesem Tag an?</h4><div class="typegrid">' +
+    Object.keys(TYPES).map(x => '<button data-act="daytype" data-ts="' + ts + '" data-t="' + x + '" aria-pressed="' + (x === t) + '">' + TSHORT[x] + '</button>').join('') + '</div>' +
+    '<label class="field" for="everyweek"><span>Für jeden ' + DAYS_LONG[wd] + ' übernehmen<small class="note" style="display:block">Sonst gilt die Änderung nur für diesen Tag</small></span><input type="checkbox" id="everyweek" style="width:24px;height:24px"></label>' +
+    (S.weekPlan[k] ? '<button class="addset" data-act="dayreset" data-ts="' + ts + '">Zurück zum Wochenplan (' + TSHORT[S.settings.schedule[wd]] + ')</button>' : '') + '</section>';
+  openSheet(dateTxt, h);
+}
+
+/* ---------- Photos (IndexedDB, mirrored in memory so backups stay synchronous) ---------- */
+const photoData = {};
+const PDB = {
+  db: null,
+  open(){ if(!this.db) this.db = new Promise((res, rej) => { try{ const r = indexedDB.open('trainingsplan-fotos', 1); r.onupgradeneeded = () => r.result.createObjectStore('photos'); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); }catch(e){ rej(e); } }); return this.db; },
+  async tx(mode, fn){ const db = await this.open(); return new Promise((res, rej) => { const t = db.transaction('photos', mode); const out = fn(t.objectStore('photos')); t.oncomplete = () => res(out && out.result); t.onerror = () => rej(t.error); }); },
+  put(id, data){ return this.tx('readwrite', s => s.put(data, id)); },
+  del(id){ return this.tx('readwrite', s => s.delete(id)); },
+  get(id){ return this.tx('readonly', s => s.get(id)); }
+};
+async function loadPhotos(){
+  for(const p of S.photos){ if(photoData[p.id]) continue; try{ const d = await PDB.get(p.id); if(d) photoData[p.id] = d; }catch(e){} }
+  if(view === 'weight') render();
+}
+function resizeImage(file){
+  return new Promise((res, rej) => {
+    const img = new Image(), url = URL.createObjectURL(file);
+    img.onload = () => {
+      const max = 1080, sc = Math.min(1, max / Math.max(img.width, img.height));
+      const c = document.createElement('canvas'); c.width = Math.round(img.width * sc); c.height = Math.round(img.height * sc);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      URL.revokeObjectURL(url); res(c.toDataURL('image/jpeg', 0.8));
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); rej(new Error('img')); };
+    img.src = url;
+  });
+}
+async function addPhoto(file){
+  try{
+    const data = await resizeImage(file);
+    const id = 'p' + Date.now();
+    await PDB.put(id, data); photoData[id] = data;
+    const w = S.weights[S.weights.length - 1];
+    S.photos.push({id, date: Date.now(), kg: w ? w.kg : null});
+    save(); render(); toast('Foto gespeichert');
+  }catch(e){ toast('Foto konnte nicht gespeichert werden.'); }
+}
+
+/* ---------- Weight ---------- */
+function weightStats(){
+  const w = S.weights;
+  if(!w.length) return null;
+  const cur = w[w.length - 1], first = w[0];
+  /* rate per week from entries of the last 14 days (needs at least 7 days of span) */
+  const recent = w.filter(x => x.date >= Date.now() - 15 * 864e5);
+  let rate = null;
+  if(recent.length >= 2){
+    const span = (recent[recent.length - 1].date - recent[0].date) / (7 * 864e5);
+    if(span >= 1){
+      const avg = arr => arr.reduce((s, x) => s + x.kg, 0) / arr.length;
+      const half = Math.ceil(recent.length / 2);
+      const a = avg(recent.slice(0, half)), b = avg(recent.slice(-half));
+      rate = (b - a) / Math.max(span / 2, 0.5);
+    }
+  }
+  return {cur, first, diff: cur.kg - first.kg, rate, ratePct: rate != null ? rate / cur.kg * 100 : null};
+}
+function weightChart(){
+  const w = S.weights.slice(-60);
+  if(w.length < 2) return '<p class="note">Ab dem zweiten Eintrag siehst du hier deine Kurve.</p>';
+  const W = 320, H = 180, L = 36, R = 12, T = 14, B = 26;
+  const ma = w.map((p, i) => { const win = w.filter(q => q.date <= p.date && q.date > p.date - 7 * 864e5); return win.reduce((s, q) => s + q.kg, 0) / win.length; });
+  const vals = w.map(p => p.kg).concat(S.weightGoal ? [S.weightGoal] : []);
+  let lo = Math.floor(Math.min(...vals) - 0.5), hi = Math.ceil(Math.max(...vals) + 0.5);
+  const t0 = w[0].date, t1 = w[w.length - 1].date;
+  const x = d => L + (d - t0) / (t1 - t0 || 1) * (W - L - R);
+  const y = v => T + (1 - (v - lo) / (hi - lo)) * (H - T - B);
+  const ticks = [lo, (lo + hi) / 2, hi];
+  let s = '<svg class="trend" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Gewichtsverlauf von ' + fmt(w[0].kg) + ' auf ' + fmt(w[w.length - 1].kg) + ' kg">';
+  s += ticks.map(t => '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y(t).toFixed(1) + '" y2="' + y(t).toFixed(1) + '" class="grid"/><text x="' + (L - 6) + '" y="' + (y(t) + 3.5).toFixed(1) + '" text-anchor="end" class="ax">' + fmt(Math.round(t * 10) / 10) + '</text>').join('');
+  if(S.weightGoal) s += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y(S.weightGoal).toFixed(1) + '" y2="' + y(S.weightGoal).toFixed(1) + '" class="goal"/><text x="' + (W - R) + '" y="' + (y(S.weightGoal) - 5).toFixed(1) + '" text-anchor="end" class="ax">Ziel ' + fmt(S.weightGoal) + '</text>';
+  s += w.map(p => '<circle cx="' + x(p.date).toFixed(1) + '" cy="' + y(p.kg).toFixed(1) + '" r="4" class="wdot"><title>' + fmtDate(p.date) + ': ' + fmt(p.kg) + ' kg</title></circle>').join('');
+  s += '<path d="' + ma.map((v, i) => (i ? 'L' : 'M') + x(w[i].date).toFixed(1) + ' ' + y(v).toFixed(1)).join(' ') + '" class="line"/>';
+  s += '<text x="' + L + '" y="' + (H - 6) + '" class="ax">' + fmtDate(t0) + '</text><text x="' + (W - R) + '" y="' + (H - 6) + '" text-anchor="end" class="ax">' + fmtDate(t1) + '</text></svg>';
+  s += '<div class="legend"><span><i style="background:var(--m-sec);border-radius:50%"></i>Messwert</span><span><i style="background:var(--accent);height:3px;vertical-align:3px"></i>7-Tage-Schnitt</span>' + (S.weightGoal ? '<span><i style="background:none;border-top:2px dashed var(--good);height:0;vertical-align:3px"></i>Ziel</span>' : '') + '</div>';
+  return s;
+}
+function renderWeight(){
+  const st = weightStats(), goal = S.weightGoal;
+  let h = '<header class="bar"><button class="ghost" data-act="go" data-v="home">‹ Start</button><h1>Gewicht</h1></header><div class="stack">';
+  if(st){
+    const down = st.diff < 0;
+    let rateChip = '';
+    if(st.ratePct != null){
+      const r = st.ratePct;
+      if(r <= -1.0) rateChip = '<span class="chip warn">' + fmt(Math.round(st.rate * 10) / 10) + ' kg pro Woche: sehr schnell. Über 1 % pro Woche steigt das Risiko, Muskeln zu verlieren.</span>';
+      else if(r <= -0.4) rateChip = '<span class="chip good">' + fmt(Math.round(st.rate * 10) / 10) + ' kg pro Woche: ideales Tempo zum Abnehmen mit Muskelerhalt</span>';
+      else if(r < 0) rateChip = '<span class="chip info">' + fmt(Math.round(st.rate * 10) / 10) + ' kg pro Woche: langsam, aber auf dem richtigen Weg</span>';
+      else rateChip = '<span class="chip info">+' + fmt(Math.round(st.rate * 10) / 10) + ' kg pro Woche. Schwankungen von 1–2 kg sind normal (Wasser, Essen).</span>';
+    }
+    let goalHtml = '';
+    if(goal){
+      const total = st.first.kg - goal, doneKg = st.first.kg - st.cur.kg;
+      const pct = total > 0 ? Math.max(0, Math.min(100, doneKg / total * 100)) : 0;
+      goalHtml = '<div class="goalbar"><div class="goalbar-t"><span>Start ' + fmt(st.first.kg) + '</span><span>Ziel ' + fmt(goal) + '</span></div><div class="goalbar-b"><i style="width:' + pct.toFixed(1) + '%"></i></div>' +
+        '<p class="goalbar-v">' + (st.cur.kg <= goal ? 'Ziel erreicht! 🎉' : 'Noch <b>' + fmt(Math.round((st.cur.kg - goal) * 10) / 10) + ' kg</b> bis zum Ziel · ' + Math.round(pct) + ' % geschafft') + '</p></div>';
+    }
+    h += '<section class="card stack whero"><div class="whero-top"><div><span class="eyebrow">Aktuell · ' + fmtDate(st.cur.date) + '</span><b class="num wbig">' + fmt(st.cur.kg) + '<small> kg</small></b></div>' +
+      (S.weights.length > 1 ? '<div class="wdiff ' + (down ? 'good' : '') + '"><b class="num">' + (st.diff > 0 ? '+' : '') + fmt(Math.round(st.diff * 10) / 10) + ' kg</b><span>seit ' + fmtDate(st.first.date) + '</span></div>' : '') + '</div>' +
+      goalHtml + rateChip + '</section>';
+  }
+  const today = S.weights.find(x => dateKey(x.date) === dateKey(Date.now()));
+  h += '<section class="card stack"><h4>' + (today ? 'Heutigen Wert ändern' : 'Gewicht eintragen') + '</h4><p class="note">Am besten morgens nach dem Aufstehen, vor dem Frühstück. Datum und Uhrzeit speichert die App automatisch.</p>' +
+    '<div class="row"><label class="fld" style="flex:1"><input id="wkg" inputmode="decimal" placeholder="' + (st ? fmt(st.cur.kg) : '80,0') + '" value="' + (today ? fmt(today.kg) : '') + '" aria-label="Gewicht in kg"><span>kg</span></label><button class="btn primary" data-act="wsave">Speichern</button></div></section>';
+  h += '<section class="card stack"><h4>Verlauf</h4>' + weightChart() + '</section>';
+  h += '<section class="card stack"><div class="row" style="justify-content:space-between"><h4>Fortschrittsfotos</h4><label class="btn primary" for="photoin">Foto hinzufügen</label></div>' +
+    '<input type="file" id="photoin" accept="image/*" hidden>' +
+    '<p class="note">Du kannst direkt ein Foto aufnehmen oder eins aus deiner Mediathek wählen. Tipp: immer gleiches Licht, gleiche Pose, gleicher Ort. Fotos bleiben nur auf deinem iPhone.</p>';
+  if(S.photos.length >= 2){
+    const a = S.photos[0], b = S.photos[S.photos.length - 1];
+    h += '<div class="beforeafter">' + [a, b].map((p, i) => '<figure><img data-photo="' + p.id + '" alt="Foto vom ' + fmtDate(p.date) + '"' + (photoData[p.id] ? ' src="' + photoData[p.id] + '"' : '') + '><figcaption><b>' + (i ? 'Jetzt' : 'Vorher') + '</b> ' + fmtDate(p.date) + (p.kg ? ' · ' + fmt(p.kg) + ' kg' : '') + '</figcaption></figure>').join('') + '</div>';
+  }
+  if(S.photos.length){
+    h += '<div class="pgrid">' + S.photos.slice().reverse().map(p => '<button class="pthumb" data-act="photo" data-id="' + p.id + '"><img alt="Foto vom ' + fmtDate(p.date) + '"' + (photoData[p.id] ? ' src="' + photoData[p.id] + '"' : '') + '><span>' + fmtDate(p.date) + '</span></button>').join('') + '</div>';
+  }
+  h += '</section>';
+  h += '<section class="card stack"><h4>Zielgewicht</h4><div class="row"><label class="fld" style="flex:1"><input id="wgoal" inputmode="decimal" placeholder="z. B. 78" value="' + (goal ? fmt(goal) : '') + '" aria-label="Zielgewicht"><span>kg</span></label><button class="btn" data-act="wgoal">Speichern</button></div>' +
+    '<p class="note">Gesundes Tempo zum Abnehmen mit Muskelerhalt: etwa 0,5–1 % deines Körpergewichts pro Woche. Dazu viel Eiweiß (1,6–2,2 g pro kg) und weiter schwer trainieren.</p></section>';
+  if(S.weights.length){
+    h += '<section class="card stack"><h4>Alle Einträge</h4><div class="cmp">' + S.weights.slice().reverse().slice(0, 30).map(x =>
+      '<div class="cmp-row"><div><b class="num">' + fmt(x.kg) + ' kg</b><span class="num">' + new Date(x.date).toLocaleString('de-DE', {weekday:'short', day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit'}) + '</span></div>' +
+      (confirmKey === 'wdel-' + x.date ? '<button class="btn danger" data-act="wdel2" data-d="' + x.date + '">Löschen</button>' : '<button class="addset del" data-act="wdel" data-d="' + x.date + '">Entfernen</button>') + '</div>').join('') + '</div></section>';
+  }
+  return h + '</div>';
+}
+function photoSheet(id){
+  const p = S.photos.find(x => x.id === id); if(!p) return;
+  openSheet(fmtDate(p.date) + (p.kg ? ' · ' + fmt(p.kg) + ' kg' : ''),
+    '<img class="pbig" alt="Fortschrittsfoto" src="' + (photoData[id] || '') + '">' +
+    (confirmKey === 'pdel-' + id ? '<button class="btn danger" data-act="pdel2" data-id="' + id + '">Foto endgültig löschen</button>' : '<button class="btn danger" data-act="pdel" data-id="' + id + '">Foto löschen</button>'));
+}
+
+/* ---------- Exercise duration (tracked in the background) ---------- */
+function markActivity(ei){
+  const a = S.active, e = a.items[ei], now = Date.now();
+  if(!e.t0){
+    const pj = partnerOf(ei);
+    if(pj >= 0 && a.items[pj].t0) e.t0 = a.items[pj].t0;
+    else { const prev = a.lastAct || a.start; e.t0 = (now - prev) < 15 * 60e3 ? prev : now - 60e3; }
+  }
+  e.t1 = now; a.lastAct = now;
+}
+function durOf(e){ return e.t0 && e.t1 ? Math.round((e.t1 - e.t0) / 1000) : null; }
+function avgDur(exId){
+  const d = [];
+  for(const s of S.sessions) for(const e of s.entries) if(e.exId === exId && e.dur > 0) d.push(e.dur);
+  return d.length ? {avg: Math.round(d.reduce((x, y) => x + y, 0) / d.length), n: d.length} : null;
+}
+
+/* ---------- Check-in: readiness before, effort after ---------- */
+const CHECK = {
+  sleep:{q:'Schlaf letzte Nacht', o:[['u6','unter 6 h'],['6','6–7 h'],['7','7–8 h'],['8','über 8 h']]},
+  food:{q:'Heute ausreichend gegessen?', o:[['low','zu wenig'],['ok','geht so'],['good','gut']]},
+  energy:{q:'Wie fit fühlst du dich?', o:[['tired','müde'],['normal','normal'],['fresh','fit']]},
+  stress:{q:'Stress', o:[['high','hoch'],['mid','mittel'],['low','niedrig']]},
+  sore:{q:'Muskelkater', o:[['strong','stark'],['light','leicht'],['none','keiner']]}
+};
+const AFTER = {
+  rpe:{q:'Wie anstrengend war das Training?', o:[['3','leicht'],['5','mittel'],['7','hart'],['9','sehr hart'],['10','maximal']]},
+  feel:{q:'Wie lief es?', o:[['bad','schlecht'],['ok','okay'],['good','gut'],['great','super']]}
+};
+function chipRows(defs, vals, act){
+  return Object.keys(defs).map(k => '<div class="ci-row"><span class="ci-q">' + defs[k].q + '</span><div class="ci-opts">' +
+    defs[k].o.map(o => '<button data-act="' + act + '" data-k="' + k + '" data-v="' + o[0] + '" aria-pressed="' + ((vals || {})[k] === o[0]) + '">' + o[1] + '</button>').join('') + '</div></div>').join('');
+}
+function checkinCard(a){
+  const c = a.checkin || {};
+  const answered = Object.keys(CHECK).filter(k => c[k]).length;
+  if(answered === Object.keys(CHECK).length && !a.ciOpen){
+    const txt = Object.keys(CHECK).map(k => CHECK[k].o.find(o => o[0] === c[k])[1]).join(' · ');
+    return '<section class="card ci-done"><span><b>Check-in:</b> ' + esc(txt) + '</span><button class="addset" data-act="ciopen">Ändern</button></section>';
+  }
+  return '<section class="card stack ci"><div><h4>Kurzer Check-in</h4><p class="note">5 Fragen, optional. Damit erkennt die App mit der Zeit, wie Schlaf, Essen und Stress dein Training beeinflussen.</p></div>' + chipRows(CHECK, c, 'ci') +
+    (answered ? '<button class="addset" data-act="ciclose">Fertig</button>' : '') + '</section>';
+}
+const sleepShort = c => c && (c.sleep === 'u6' || c.sleep === '6');
+
+/* ---------- Pattern detection ----------
+   Rules are pragmatic, based on: adults need >= 7 h sleep (AASM/SRS consensus 2015);
+   several nights of short sleep reduce strength in compound lifts (Knowles et al. 2018);
+   weight loss of ~0.5–1 % body weight per week best preserves muscle (Helms et al. 2014, Garthe et al. 2011).
+   A hint appears only with at least 3 check-ins in the last 14 days and at least half of them affected. */
+function recentCheckins(days){
+  return S.sessions.filter(s => s.checkin && s.start >= Date.now() - days * 864e5).map(s => s.checkin);
+}
+function sessionScore(sess){
+  /* average % change of the estimated max vs the previous time per exercise */
+  const idx = S.sessions.indexOf(sess); let sum = 0, n = 0;
+  for(const e of sess.entries){
+    const done = e.sets.filter(x => x.done && x.reps > 0); if(!done.length) continue;
+    for(let i = idx - 1; i >= 0; i--){
+      const pe = S.sessions[i].entries.find(x => x.exId === e.exId && x.sets.some(y => y.done && y.reps > 0));
+      if(pe){
+        const a = perf(done), b = perf(pe.sets.filter(y => y.done && y.reps > 0));
+        const va = a.maxKg > 0 ? a.e1 : a.total, vb = b.maxKg > 0 ? b.e1 : b.total;
+        if(vb > 0){ sum += (va / vb - 1) * 100; n++; }
+        break;
+      }
+    }
+  }
+  return n ? sum / n : null;
+}
+function insights(){
+  const out = [], ci = recentCheckins(14), n = ci.length;
+  if(n >= 3){
+    const short = ci.filter(sleepShort).length, veryShort = ci.filter(c => c.sleep === 'u6').length;
+    if(short / n >= 0.5) out.push({key:'sleep', tone:'warn', title:'Du schläfst oft zu wenig',
+      text:'Bei ' + short + ' von ' + n + ' Trainings in den letzten 2 Wochen hattest du unter 7 Stunden Schlaf' + (veryShort >= 2 ? ', ' + veryShort + '× sogar unter 6' : '') + '. Empfohlen sind mindestens 7 Stunden. Mehrere kurze Nächte am Stück senken nachweislich deine Kraft bei Übungen wie Bankdrücken und bremsen die Erholung.',
+      tip:'Feste Schlafenszeit, Handy 30 Minuten vorher weg, Schlafzimmer kühl und dunkel.'});
+    const low = ci.filter(c => c.food === 'low').length;
+    if(low / n >= 0.5) out.push({key:'food', tone:'warn', title:'Du isst vor dem Training oft zu wenig',
+      text:'Bei ' + low + ' von ' + n + ' Trainings hast du „zu wenig gegessen“ angegeben. Beim Abnehmen ist ein leichtes Defizit richtig. Fühlst du dich aber oft leer, ist das Defizit meist zu groß, und das kostet Kraft und Muskeln.',
+      tip:'1–3 Stunden vor dem Training eine Mahlzeit mit Kohlenhydraten und Eiweiß, z. B. Haferflocken mit Skyr.'});
+    const tired = ci.filter(c => c.energy === 'tired').length;
+    if(tired / n >= 0.5 && !out.some(x => x.key === 'sleep')) out.push({key:'energy', tone:'info', title:'Du startest oft müde',
+      text:'Bei ' + tired + ' von ' + n + ' Trainings hast du dich müde gefühlt. Achte auf Schlaf, Essen und Stress. Wenn das länger so bleibt, kann eine leichtere Woche (Deload) helfen.', tip:''});
+  }
+  const ws = weightStats();
+  if(ws && ws.ratePct != null && ws.ratePct <= -1.0) out.push({key:'wrate', tone:'warn', title:'Du nimmst sehr schnell ab',
+    text:'Zuletzt etwa ' + fmt(Math.round(Math.abs(ws.rate) * 10) / 10) + ' kg pro Woche (' + fmt(Math.round(Math.abs(ws.ratePct) * 10) / 10) + ' % deines Gewichts). Über 1 % pro Woche verlierst du leichter Muskeln. Ideal sind etwa 0,5–1 %.',
+    tip:'Etwas mehr essen, vor allem Eiweiß, und weiter schwer trainieren.'});
+  return out.filter(x => !(S.hintsHidden[x.key] && Date.now() - S.hintsHidden[x.key] < 7 * 864e5));
+}
+function insightCard(x, dismiss){
+  return '<section class="card insight ' + x.tone + '"><b>' + esc(x.title) + '</b><p>' + esc(x.text) + '</p>' + (x.tip ? '<p class="note"><b>Tipp:</b> ' + esc(x.tip) + '</p>' : '') +
+    (dismiss ? '<button class="addset" data-act="hidehint" data-k="' + x.key + '">Für 7 Tage ausblenden</button>' : '') + '</section>';
+}
+function correlationHtml(){
+  const rows = S.sessions.filter(s => s.checkin && s.checkin.sleep).map(s => ({short: sleepShort(s.checkin), food: s.checkin.food, score: sessionScore(s), rpe: s.checkin.rpe ? +s.checkin.rpe : null})).filter(r => r.score != null);
+  const grp = (f) => { const g = rows.filter(f); return g.length >= 3 ? {n: g.length, avg: g.reduce((x, r) => x + r.score, 0) / g.length} : null; };
+  const pairs = [
+    ['Schlaf', grp(r => !r.short), grp(r => r.short), 'ab 7 h', 'unter 7 h'],
+    ['Essen', grp(r => r.food === 'good'), grp(r => r.food === 'low'), 'gut gegessen', 'zu wenig']
+  ];
+  let h = '';
+  for(const [name, good, bad, gl, bl] of pairs){
+    if(!good || !bad) continue;
+    const mx = Math.max(Math.abs(good.avg), Math.abs(bad.avg), 1);
+    const bar = (g, lab) => '<div class="corr-r"><span>' + lab + ' (' + g.n + '×)</span><div class="corr-b"><i class="' + (g.avg >= 0 ? 'pos' : 'neg') + '" style="width:' + (Math.abs(g.avg) / mx * 100).toFixed(0) + '%"></i></div><b class="num">' + (g.avg > 0 ? '+' : '') + fmt(Math.round(g.avg * 10) / 10) + ' %</b></div>';
+    h += '<div class="corr"><span class="eyebrow">' + name + '</span>' + bar(good, gl) + bar(bad, bl) + '</div>';
+  }
+  if(!h) return '<p class="note">Sobald du mindestens 3 Trainings mit kurzem und 3 mit gutem Schlaf (bzw. Essen) eingetragen hast, vergleicht die App hier deine Leistung. Leistung = durchschnittliche Veränderung deiner Übungen gegenüber dem letzten Mal.</p>';
+  return '<p class="note">Durchschnittliche Leistungsveränderung gegenüber dem letzten Mal, je nach Check-in:</p>' + h;
+}
+function renderRecovery(){
+  const ci = recentCheckins(14), all = S.sessions.filter(s => s.checkin);
+  let h = '';
+  const ins = insights();
+  h += ins.length ? ins.map(x => insightCard(x, false)).join('') : '<section class="card insight good"><b>Alles im grünen Bereich</b><p>' + (ci.length >= 3 ? 'In den letzten 2 Wochen gibt es keine auffälligen Muster bei Schlaf, Essen oder Gewicht.' : 'Fülle bei jedem Training den kurzen Check-in aus. Ab 3 Einträgen in 2 Wochen erkennt die App Muster.') + '</p></section>';
+  h += '<section class="card stack"><h4>Leistung je nach Schlaf und Essen</h4>' + correlationHtml() + '</section>';
+  if(all.length){
+    h += '<section class="card stack"><h4>Letzte Check-ins</h4><div class="cmp">' + all.slice(-10).reverse().map(s => {
+      const c = s.checkin, parts = [];
+      for(const k of Object.keys(CHECK)) if(c[k]) parts.push(CHECK[k].o.find(o => o[0] === c[k])[1]);
+      if(c.rpe) parts.push('Anstrengung ' + c.rpe + '/10');
+      return '<div class="cmp-row"><div><b>' + fmtDate(s.start) + ' · Workout ' + s.wk + '</b><span>' + esc(parts.join(' · ')) + '</span></div></div>';
+    }).join('') + '</div></section>';
+  }
+  h += '<p class="note">Wie die Hinweise entstehen: Ein Hinweis erscheint, wenn in den letzten 14 Tagen mindestens 3 Check-ins vorliegen und mindestens die Hälfte betroffen ist. Grundlage: Erwachsene brauchen mindestens 7 Stunden Schlaf (AASM-Konsens 2015); mehrere kurze Nächte senken die Kraft bei Grundübungen (Knowles et al. 2018); beim Abnehmen erhält ein Tempo von 0,5–1 % pro Woche am besten die Muskeln (Helms et al. 2014, Garthe et al. 2011). Die Schwellen sind sinnvolle Faustregeln, keine medizinische Diagnose.</p>';
+  return h;
+}
+
 function tipsList(list){ return '<ul class="tips">' + list.map((t, i) => '<li><span class="ic">' + (i + 1) + '</span><div><b>' + esc(t[0]) + '</b><span>' + esc(t[1]) + '</span></div></li>').join('') + '</ul>'; }
 function anotherWorkout(exclude){
   return '<div class="other">' + (exclude ? 'Anderes Workout:' : 'Doch Krafttraining?') + ['A','B','C'].filter(x => x !== exclude).map(x => '<button data-act="start" data-wk="' + x + '" aria-label="Workout ' + x + ' starten">' + x + '</button>').join('') + '</div>';
@@ -939,7 +1521,7 @@ function renderHome(){
   const doneToday = sessionsOn(now);
   const nx = nextTraining(now);
   const nxTxt = nx ? nx.label + ': Workout ' + nx.wk : 'Kein Krafttraining geplant';
-  let h = '<header class="bar"><div class="brand"><span class="logo">X1</span><div><h1>Xplode Oberkörper</h1><p>Woche ' + weekNo() + ' · ' + DAYS_LONG[wdIdx(now)] + '</p></div></div><button class="ghost" data-act="plan">Plan</button></header>';
+  let h = '<header class="bar"><div class="brand"><span class="logo"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg></span><div><h1>Trainingsplan</h1><p>Woche ' + weekNo() + ' · ' + DAYS_LONG[wdIdx(now)] + '</p></div></div><button class="ghost" data-act="plan">Plan</button></header>';
   h += '<div class="stack">';
   if(!storageOk) h += '<p class="chip warn">Speichern ist in diesem Browser blockiert. Einträge gehen beim Schließen verloren.</p>';
   h += weekStrip();
@@ -982,7 +1564,14 @@ function renderHome(){
     '<div class="stat"><b class="num">' + thisWeek + '/' + planned + '</b><span>Diese Woche</span></div>' +
     '<div class="stat"><b class="num">' + S.sessions.length + '</b><span>Trainings gesamt</span></div>' +
     '<div class="stat"><b class="num">' + (last ? fmtDate(last.start) : '–') + '</b><span>Letztes Training</span></div></section>';
-  h += '<nav class="links"><button class="btn" data-act="go" data-v="history">Verlauf</button><button class="btn" data-act="go" data-v="settings">Einstellungen</button></nav>';
+  const ws = weightStats();
+  h += '<button class="card wcard" data-act="go" data-v="weight"><span class="eyebrow">Gewicht</span>' +
+    (ws ? '<span class="wcard-v"><b class="num">' + fmt(ws.cur.kg) + ' kg</b>' + (S.weights.length > 1 ? '<span class="num ' + (ws.diff < 0 ? 'good' : '') + '">' + (ws.diff > 0 ? '+' : '') + fmt(Math.round(ws.diff * 10) / 10) + ' kg seit Start</span>' : '') + '</span>' +
+      (S.weightGoal && ws.cur.kg > S.weightGoal ? '<span class="note">Noch ' + fmt(Math.round((ws.cur.kg - S.weightGoal) * 10) / 10) + ' kg bis zum Ziel</span>' : '')
+       : '<span class="wcard-v"><b>Gewicht eintragen</b></span><span class="note">Verfolge deinen Fortschritt mit Kurve, Ziel und Fotos</span>') + '<span class="wcard-go">›</span></button>';
+  const ins = insights();
+  if(ins.length) h += insightCard(ins[0], true);
+  h += '<nav class="links three"><button class="btn" data-act="go" data-v="history">Verlauf</button><button class="btn" data-act="go" data-v="weight">Gewicht</button><button class="btn" data-act="go" data-v="settings">Einstellungen</button></nav>';
   if(!S.sessions.length) h += '<p class="note">Tipp: In Safari über „Teilen“ → „Zum Home-Bildschirm“ hinzufügen. Dann startet die App wie eine normale App. Deine Trainingstage legst du unter Einstellungen fest.</p>';
   h += '</div>';
   return h;
@@ -991,6 +1580,10 @@ function renderHome(){
 function setTarget(it, si, n){
   if(it.amrap) return si === n - 1 ? '6+ (so viele wie möglich)' : '6 Wdh';
   return it.min + '–' + it.max + ' Wdh';
+}
+function feedbackFor(it, si, n, s){
+  if(s.pre && !s.done) return {tone:'', text:'Letztes Mal ' + s.reps + ' Wdh · Ziel: ' + setTarget(it, si, n)};
+  return setFeedback(it, si, n, s.reps);
 }
 function setFeedback(it, si, n, reps){
   if(reps == null) return {tone:'', text:'Ziel: ' + setTarget(it, si, n)};
@@ -1006,9 +1599,9 @@ function verdictHtml(e, it){
   const step = it.inc || 2.5;
   const kgNow = num(e.sets[e.sets.length - 1] && e.sets[e.sets.length - 1].kg) || num(e.sets[0] && e.sets[0].kg) || 0;
   if(it.amrap){
-    const last = e.sets[e.sets.length - 1], r = last ? last.reps : null;
+    const last = e.sets[e.sets.length - 1], r = last && (last.done || !last.pre) ? last.reps : null;
     const idx = r == null ? -1 : AMRAP_TABLE.findIndex(x => x.test(r));
-    let h = '<div class="xr"><div class="xr-h">Xplode-Regel für den letzten Satz</div><div class="xr-grid">' +
+    let h = '<div class="xr"><div class="xr-h">Steigerungsregel für den letzten Satz</div><div class="xr-grid">' +
       AMRAP_TABLE.map((x, i) => '<div class="xr-c' + (i === idx ? ' on ' + x.tone : '') + '"><b>' + x.lab + '</b><span>' + x.act + '</span></div>').join('') + '</div>';
     if(idx >= 0){
       const x = AMRAP_TABLE[idx], next = Math.max(0, kgNow + x.d);
@@ -1021,7 +1614,7 @@ function verdictHtml(e, it){
     }
     return h + '</div>';
   }
-  const withReps = e.sets.filter(s => s.reps != null);
+  const withReps = e.sets.filter(s => s.reps != null && (s.done || !s.pre));
   const atTop = withReps.filter(s => s.reps >= it.max).length;
   const below = withReps.some(s => s.reps < it.min);
   let tone = '', txt;
@@ -1036,14 +1629,14 @@ function updateFeedback(ei){
   const e = a.items[ei], it = itemOf(e);
   e.sets.forEach((s, si) => {
     const el = document.getElementById('fb-' + ei + '-' + si); if(!el) return;
-    const f = setFeedback(it, si, e.sets.length, s.reps);
+    const f = feedbackFor(it, si, e.sets.length, s);
     el.className = 'fb ' + f.tone; el.textContent = f.text;
   });
   const v = document.getElementById('verdict-' + ei); if(v) v.innerHTML = verdictHtml(e, it);
 }
 function setRow(kind, ei, si, s, label, small, ph){
   const id = kind + '-' + ei + '-' + si;
-  return '<div class="set' + (s.done ? ' done' : '') + (kind === 'w' ? ' warm' : '') + '">' +
+  return '<div class="set' + (s.done ? ' done' : '') + (s.pre && !s.done ? ' pre' : '') + (kind === 'w' ? ' warm' : '') + '">' +
     '<button class="dot' + (kind === 'w' ? ' w' : '') + '" data-act="' + (kind === 'w' ? 'warm' : 'chk') + '" data-ei="' + ei + '" data-si="' + si + '" aria-pressed="' + !!s.done + '" aria-label="' + (kind === 'w' ? 'Aufwärmsatz ' : 'Satz ') + (si + 1) + ' abhaken">' + label + (small ? '<small>' + small + '</small>' : '') + '</button>' +
     '<label class="fld"><input id="kg-' + id + '" data-kg="' + id + '" inputmode="decimal" autocomplete="off" value="' + (s.kg != null ? fmt(s.kg) : '') + '" placeholder="0" aria-label="Gewicht"><span>kg</span></label>' +
     '<span class="x">×</span>' +
@@ -1064,13 +1657,22 @@ function entryHtml(e, ei){
   }
   if(e.hint) h += '<p class="note">' + esc(e.hint) + '</p>';
   if(e.sugg.last) h += '<div class="last">Letztes Mal: <b class="num">' + esc(e.sugg.last) + '</b> · ' + fmtDate(e.sugg.date) + '</div>';
-  h += '<div><span class="chip ' + e.sugg.tone + '">' + esc(e.sugg.text) + '</span></div>';
+  if(!e.sugg.first){
+    const curKg = num(e.sets[0] && e.sets[0].kg);
+    const canApply = e.sugg.kg != null && curKg !== e.sugg.kg && !e.sets.some(s => s.done);
+    h += '<div class="sugg-row"><span class="chip ' + e.sugg.tone + '">' + esc(e.sugg.text) + '</span>' +
+      (canApply ? '<button class="addset" data-act="applysugg" data-ei="' + ei + '">' + fmt(e.sugg.kg) + ' kg übernehmen</button>' : '') + '</div>';
+  }
+  if(e.sets.length && e.sets.every(s => s.done)){
+    const c = compareSets(e.sets, e.prevSets);
+    if(c) h += '<div class="cmp-inline ' + c.tone + '">' + esc(c.text) + '</div>';
+  }
   if(e.warm && e.warm.length){
     h += '<span class="grp-l">' + (it.warmup ? 'Aufwärmsätze' : 'Aufwärmsatz (optional)') + ' · ohne Pause-Timer</span><div class="sets">' + e.warm.map((w, wi) => setRow('w', ei, wi, w, 'W' + (wi + 1), w.p ? Math.round(w.p * 100) + '%' : '', w.reps != null ? w.reps : 5)).join('') + '</div>';
   }
   h += '<span class="grp-l">Arbeitssätze</span>';
   h += '<div class="sets">' + e.sets.map((s, si) => {
-    const f = setFeedback(it, si, e.sets.length, s.reps);
+    const f = feedbackFor(it, si, e.sets.length, s);
     return '<div class="setwrap">' + setRow('s', ei, si, s, String(si + 1), it.amrap && si === e.sets.length - 1 ? 'max' : '', s.ph != null ? s.ph : it.min) +
       '<div class="fb ' + f.tone + '" id="fb-' + ei + '-' + si + '">' + esc(f.text) + '</div></div>';
   }).join('') + '</div>';
@@ -1090,13 +1692,16 @@ function renderSession(){
   h += '<div class="stack">';
   if(confirmKey === 'end'){
     const open = openSets();
-    h += '<section class="panel"><p><b>Training beenden?</b> ' + (open ? open + ' Sätze sind noch offen. Gespeichert werden nur abgehakte Sätze.' : 'Alle Sätze sind erledigt.') + '</p>' +
+    const missing = {}; for(const k of Object.keys(CHECK)) if(!(a.checkin || {})[k]) missing[k] = CHECK[k];
+    h += '<section class="panel"><p><b>Training beenden?</b> ' + (open ? open + ' Sätze sind noch offen. Gespeichert werden nur abgehakte Sätze. Übersprungene Übungen behalten ihre alten Werte.' : 'Alle Sätze sind erledigt.') + '</p>' +
+      '<div class="stack ci">' + chipRows(AFTER, a.checkin, 'ci') + chipRows(missing, a.checkin, 'ci') + '</div>' +
       '<div class="row"><button class="btn primary" data-act="finish">Speichern</button><button class="btn" data-act="cancel">Weiter trainieren</button></div>' +
       '<button class="btn danger" data-act="discard">Training verwerfen</button></section>';
   }else if(confirmKey === 'discard'){
     h += '<section class="panel"><p><b>Training wirklich verwerfen?</b> Alle Einträge dieser Einheit gehen verloren.</p>' +
       '<div class="row"><button class="btn danger" data-act="discard2">Verwerfen</button><button class="btn" data-act="cancel">Zurück</button></div></section>';
   }
+  if(confirmKey !== 'end') h += checkinCard(a);
   let i = 0;
   while(i < a.items.length){
     const it = itemOf(a.items[i]);
@@ -1117,6 +1722,8 @@ function renderSummary(){
   if(s.prs.length) h += '<div class="stack" style="gap:6px"><span class="eyebrow">Neue Bestwerte</span>' + s.prs.map(n => '<span class="chip good">' + esc(n) + '</span>').join('') + '</div>';
   h += '</section>';
   if(s.rows && s.rows.length) h += setsChart(s.rows) + trendChart(s.trend, s.mainName) + compareList(s.rows);
+  if(s.durs && s.durs.length) h += durTable(s.durs);
+  if(s.rpe && s.mins > 0) h += '<section class="card"><h4>Trainingsbelastung</h4><p><b class="num">' + (s.rpe * s.mins) + '</b> Punkte <span class="note">(Anstrengung ' + s.rpe + '/10 × ' + s.mins + ' min). So lässt sich die Belastung verschiedener Trainings vergleichen.</span></p></section>';
   if(nx) h += '<section class="card stack"><div class="eyebrow">Als Nächstes</div><div class="wk-head">' + plateEl(nx.wk) + '<div><h2>Workout ' + nx.wk + '</h2><p>' + esc(nx.label) + '</p></div></div></section>';
   h += '<button class="btn primary big" data-act="go" data-v="home">Zur Übersicht</button></div>';
   return h;
@@ -1182,6 +1789,10 @@ function compareList(rows){
   }
   return h + '</div></section>';
 }
+function durTable(rows){
+  return '<section class="card stack"><h4>Dauer pro Übung</h4><p class="note">Gemessen von der vorherigen Übung bis zum letzten Satz, inklusive Pausen.</p><div class="cmp">' +
+    rows.map(r => '<div class="cmp-row"><div><b>' + esc(r.name) + '</b><span class="num">' + (r.avg && r.avg.n > 1 ? 'Ø ' + mmss(r.avg.avg) + ' min aus ' + r.avg.n + ' Trainings' : 'Erster Messwert') + '</span></div><b class="num">' + mmss(r.dur) + ' min</b></div>').join('') + '</div></section>';
+}
 function spark(points){
   if(points.length < 2) return '<svg viewBox="0 0 110 34" aria-hidden="true"></svg>';
   const min = Math.min(...points), max = Math.max(...points), span = max - min || 1;
@@ -1200,7 +1811,8 @@ function allExercises(){
 }
 function renderHistory(){
   let h = '<header class="bar"><button class="ghost" data-act="go" data-v="home">‹ Start</button><h1>Verlauf</h1></header><div class="stack">';
-  h += '<div class="tabs" role="group" aria-label="Ansicht"><button data-act="tab" data-v="sessions" aria-pressed="' + (histTab === 'sessions') + '">Trainings</button><button data-act="tab" data-v="exercises" aria-pressed="' + (histTab === 'exercises') + '">Übungen</button></div>';
+  h += '<div class="tabs" role="group" aria-label="Ansicht"><button data-act="tab" data-v="sessions" aria-pressed="' + (histTab === 'sessions') + '">Trainings</button><button data-act="tab" data-v="exercises" aria-pressed="' + (histTab === 'exercises') + '">Übungen</button><button data-act="tab" data-v="recovery" aria-pressed="' + (histTab === 'recovery') + '">Schlaf & Essen</button></div>';
+  if(histTab === 'recovery') return h + renderRecovery() + '</div>';
   if(!S.sessions.length) return h + '<section class="card"><p class="note">Noch keine Trainings gespeichert. Nach deinem ersten Training siehst du hier jede Einheit und deine Entwicklung pro Übung.</p></section></div>';
   if(histTab === 'sessions'){
     h += S.sessions.slice().reverse().map(s => {
@@ -1224,7 +1836,7 @@ function renderHistory(){
       if(!hist.length) continue;
       const pts = hist.map(x => { const p = perf(x.sets); return p.maxKg > 0 ? p.e1 : p.total; });
       const last = hist[hist.length - 1], lp = perf(last.sets);
-      h += '<div class="exitem"><b>' + esc(ex.name) + '</b>' + spark(pts.slice(-12)) + '<span class="num">Zuletzt ' + fmt(lp.maxKg) + ' kg · ' + last.sets.map(x => x.reps).join('/') + ' · ' + hist.length + '× trainiert</span></div>';
+      h += '<div class="exitem"><b>' + esc(ex.name) + '</b>' + spark(pts.slice(-12)) + '<span class="num">Zuletzt ' + fmt(lp.maxKg) + ' kg · ' + last.sets.map(x => x.reps).join('/') + ' · ' + hist.length + '× trainiert' + (avgDur(ex.id) ? ' · Ø ' + mmss(avgDur(ex.id).avg) + ' min' : '') + '</span></div>';
     }
     h += '</div>';
   }
@@ -1306,6 +1918,49 @@ document.addEventListener('click', ev => {
     case 'chk': toggleSet(ei, si); break;
     case 'warm': toggleWarm(ei, si); break;
     case 'addset': { const e = a.items[ei], l = e.sets[e.sets.length - 1]; e.sets.push({kg: l ? l.kg : null, reps: null, done: false, ph: null}); save(); render(); break; }
+    case 'day': daySheet(+b.dataset.ts); break;
+    case 'daytype': {
+      const ts = +b.dataset.ts, k = dateKey(ts), every = document.getElementById('everyweek');
+      if(every && every.checked){ S.settings.schedule[wdIdx(ts)] = b.dataset.t; delete S.weekPlan[k]; }
+      else if(b.dataset.t === S.settings.schedule[wdIdx(ts)]) delete S.weekPlan[k];
+      else S.weekPlan[k] = b.dataset.t;
+      save(); closeSheet(); render(); toast(DAYS_LONG[wdIdx(ts)] + ': ' + TYPES[b.dataset.t]); break;
+    }
+    case 'dayreset': { delete S.weekPlan[dateKey(+b.dataset.ts)]; save(); closeSheet(); render(); break; }
+    case 'wsave': {
+      const v = num($('#wkg').value);
+      if(v == null || v < 30 || v > 300){ toast('Bitte ein Gewicht zwischen 30 und 300 kg eingeben.'); break; }
+      const k = dateKey(Date.now()), ex = S.weights.find(x => dateKey(x.date) === k);
+      if(ex){ ex.kg = v; ex.date = Date.now(); } else S.weights.push({date: Date.now(), kg: v});
+      S.weights.sort((x, y) => x.date - y.date);
+      save(); render(); toast('Gewicht gespeichert'); break;
+    }
+    case 'wgoal': { const v = num($('#wgoal').value); S.weightGoal = v && v > 30 && v < 300 ? v : null; save(); render(); toast(S.weightGoal ? 'Ziel gespeichert' : 'Ziel entfernt'); break; }
+    case 'wdel': confirmKey = 'wdel-' + b.dataset.d; render(); break;
+    case 'wdel2': S.weights = S.weights.filter(x => String(x.date) !== b.dataset.d); confirmKey = null; save(); render(); break;
+    case 'photo': confirmKey = null; photoSheet(b.dataset.id); break;
+    case 'pdel': confirmKey = 'pdel-' + b.dataset.id; photoSheet(b.dataset.id); break;
+    case 'pdel2': {
+      const id = b.dataset.id; S.photos = S.photos.filter(x => x.id !== id); delete photoData[id];
+      PDB.del(id).catch(() => {}); confirmKey = null; save(); closeSheet(); render(); toast('Foto gelöscht'); break;
+    }
+    case 'ci': {
+      a.checkin = a.checkin || {};
+      a.checkin[b.dataset.k] = a.checkin[b.dataset.k] === b.dataset.v ? undefined : b.dataset.v;
+      if(a.checkin[b.dataset.k] === undefined) delete a.checkin[b.dataset.k];
+      save(); render(); break;
+    }
+    case 'ciopen': a.ciOpen = true; render(); break;
+    case 'ciclose': a.ciOpen = false; save(); render(); break;
+    case 'hidehint': S.hintsHidden[b.dataset.k] = Date.now(); save(); render(); break;
+    case 'applysugg': {
+      const e = a.items[ei], kg = e.sugg.kg;
+      e.sets.forEach(s => { if(!s.done) s.kg = kg; });
+      const it = itemOf(e);
+      (e.warm || []).forEach(w => { if(!w.done && w.p) w.kg = warmKg(kg, w.p, it); });
+      save(); render(); toast(fmt(kg) + ' kg eingetragen'); break;
+    }
+    case 'exdone': $('#exdone').hidden = true; break;
     case 'delset': { const e = a.items[ei]; if(e.sets.length > 1){ e.sets.pop(); save(); render(); toast('Letzter Arbeitssatz entfernt'); } break; }
     case 'delwarm': { const e = a.items[ei]; if(e.warm && e.warm.length){ e.warm.pop(); save(); render(); toast('Letzter Aufwärmsatz entfernt'); } break; }
     case 'addwarm': { const e = a.items[ei]; e.warm = e.warm || []; e.warm.push({kg: null, reps: null, done: false, auto: false}); save(); render(); break; }
@@ -1343,21 +1998,40 @@ document.addEventListener('click', ev => {
     case 'hello': $('#hello').hidden = true; break;
     case 'import': checkImport(importText); break;
     case 'import2': {
-      try{ S = normalize(unwrapBackup(JSON.parse(importText))); importText = ''; confirmKey = null; save(); applyTheme(); view = 'home'; render(); toast('Backup geladen'); }
+      try{ const raw = unwrapBackup(JSON.parse(importText)); S = normalize(raw);
+        if(raw.photoData) for(const [id, d] of Object.entries(raw.photoData)){ photoData[id] = d; PDB.put(id, d).catch(() => {}); }
+        importText = ''; confirmKey = null; save(); applyTheme(); view = 'home'; render(); toast('Backup geladen'); }
       catch(e){ toast('Das ist kein gültiges Backup.'); }
       break;
     }
     case 'wipe': confirmKey = 'wipe'; render(); break;
-    case 'wipe2': S = normalize({}); confirmKey = null; save(); view = 'home'; render(); toast('Alle Daten gelöscht'); break;
+    case 'wipe2': for(const p of S.photos){ PDB.del(p.id).catch(() => {}); delete photoData[p.id]; } S = normalize({}); confirmKey = null; save(); view = 'home'; render(); toast('Alle Daten gelöscht'); break;
   }
 });
+const autoDone = {};
 document.addEventListener('input', ev => {
   const t = ev.target, a = S.active;
   const ref = t.dataset.kg || t.dataset.reps;
   if(ref && a){
     const [kind, eiS, siS] = ref.split('-'), ei = +eiS, si = +siS, e = a.items[ei];
     const list = kind === 'w' ? e.warm : e.sets, row = list[si], v = num(t.value);
-    if(t.dataset.reps){ row.reps = v == null ? null : Math.round(v); save(); if(kind === 's') updateFeedback(ei); return; }
+    if(t.dataset.reps){
+      row.reps = v == null ? null : Math.round(v); row.pre = false;
+      t.closest('.set').classList.remove('pre');
+      save();
+      if(kind === 's'){
+        updateFeedback(ei);
+        /* Entering reps finishes the set: start the rest timer once typing pauses */
+        clearTimeout(autoDone[ref]);
+        if(!row.done && row.reps != null && row.reps > 0){
+          autoDone[ref] = setTimeout(() => {
+            const cur = S.active && S.active.items[ei] && S.active.items[ei].sets[si];
+            if(cur && !cur.done && cur.reps > 0) toggleSet(ei, si);
+          }, 1500);
+        }
+      }
+      return;
+    }
     row.kg = v;
     if(kind === 'w'){ row.auto = false; save(); return; }
     setTimeout(() => updateFeedback(ei), 0);
@@ -1390,6 +2064,11 @@ function checkImport(txt){
 }
 document.addEventListener('change', ev => {
   const t = ev.target;
+  if(t.id === 'photoin'){
+    const f = t.files && t.files[0]; t.value = '';
+    if(f) addPhoto(f);
+    return;
+  }
   if(t.id === 'importfile'){
     const f = t.files && t.files[0]; if(!f) return;
     const r = new FileReader();
@@ -1412,6 +2091,7 @@ try{ if('serviceWorker' in navigator && window.top === window.self && location.p
 applyTheme();
 render();
 greet();
+loadPhotos();
 if(S.active) requestWake();
 })();
 </script>
